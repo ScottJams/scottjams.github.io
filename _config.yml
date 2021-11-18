@@ -28,7 +28,7 @@ twitter_username: Scottjams
 github_username:  Scottjams
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
 
