@@ -44,6 +44,11 @@ I will demonstrate how areas of the game **spawn actors based upon saved game st
 I will demonstrate blending between animations in both engines and detail usage of **engine specific tools**.
 
 
+## Shaders
+
+I will demonstrate my use of shaders throughout my various projects.
+
+
 ## Audio
 
 I will demonstrate my use of **spatial sound** to create interesting atmospheres.
