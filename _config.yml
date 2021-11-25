@@ -19,11 +19,11 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Scott Simpson - Gameplay programming portfolio
-email: scott_j_simpson@hotmail.com
+email: ScottJamsDev@gmail.com
 description:  
   Gameplay programming portfolio for Scott Simpson.
-twitter_username: Scottjams
-github_username:  Scottjams
+twitter_username: ScottJamsDev
+github_username:  ScottJams
 
 # Build settings
 theme: minima
