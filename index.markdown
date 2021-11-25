@@ -44,6 +44,12 @@ I will demonstrate how areas of the game **spawn actors based upon saved game st
 I will demonstrate blending between animations in both engines and detail usage of **engine specific tools**.
 
 
+## Audio
+
+I will demonstrate my use of **spatial sound** to create interesting atmospheres.
+
+I will demonstrate **dynamic audio** such as tying sound effects to footstep animations and checking the ground type to play contextual audio.
+
 ## UI and Menus
 
 I will demonstrate various **UI and menu elements**, such as radial menus, health displays and pause/start menus.
