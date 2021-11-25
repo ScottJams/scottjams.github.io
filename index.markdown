@@ -11,7 +11,7 @@ This is a **short** decription of who I am, what I've done and what I'm trying t
 
 I'll decribe my **past experience** in software development and my **transition towards game dev.**
 
-I want to highlight my expericence in **Unity/UE4** and **C#/C++**
+I want to highlight my experience in **Unity/UE4** and **C#/C++**
 
 
 ## Player Controllers
@@ -25,6 +25,19 @@ I will demonstrate enemies using various **movement and attack behaviours** duri
 
 I will demonstrate **enemy pathfinding** and specifically mention my impementation of **Astar pathfinding**.
 
+## Dialogue systems
+
+I will demonstrate dialogue systems across multiple projects. 
+- Ink third party API integration utilised for my **contextual textbox display** system.
+- My own **dialogue and closed captioning system** with audio.
+
+
+## Area Structure and Save Games
+
+I will demonstrate how I **serailised game state information** to create save files.
+
+I will demonstrate how areas of the game **spawn actors based upon saved game state** and how **NPCs and objects are contextual with regards to game progress.**
+
 
 ## Animation
 
@@ -34,13 +47,6 @@ I will demonstrate blending between animations in both engines and detail usage 
 ## UI and Menus
 
 I will demonstrate various **UI and menu elements**, such as radial menus, health displays and pause/start menus.
-
-
-## Dialogue systems
-
-I will demonstrate dialogue systems across multiple projects. 
-- Ink third party API integration utilised for my **contextual textbox display** system.
-- My own **dialogue and closed captioning system** with audio.
 
 
 ## Multiplayer & Networking
