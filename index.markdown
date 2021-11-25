@@ -9,7 +9,7 @@ layout: default
 
 This is a **short** decription of who I am, what I've done and what I'm trying to do.
 
-I'll decribe my **past experience** in software development and my **transition towards game dev.**
+I'll decribe my **past experience** in professional software development, my degree in Computing Science, and my **transition towards game dev.**
 
 I want to highlight my experience in **Unity/UE4** and **C#/C++**
 
@@ -61,6 +61,18 @@ I will demonstrate various **UI and menu elements**, such as radial menus, healt
 
 
 ## Multiplayer & Networking
+
+
+
+## Other development experience
+
+I will describe my experience of various software development tools in a professional setting.
+
+- Other platforms (iOS - Swift, Objective C. SQL.)
+- Source Control (Git, Perforce)
+- Agile development, sprints (Azure DevOps, Jira)
+- Teamwork suite
+
 
 
 ## Placeholder video embed
