@@ -7,6 +7,7 @@ layout: default
 
 ## Introduction
 
+
 This is a **short** decription of who I am, what I've done and what I'm trying to do.
 
 I'll decribe my **past experience** in professional software development, my degree in Computing Science, and my **transition towards game dev.**
@@ -16,7 +17,61 @@ I want to highlight my experience in **Unity/UE4** and **C#/C++**
 
 ## Player Controllers
 
-I will demonstrate player controllers utilising **state machines** to compartmentalise movement and actions.
+In *Project Whimsy*, I used a finite state machine to compartmentalise movement and actions into individual states. 
+
+<video src="https://user-images.githubusercontent.com/69112024/152352692-f6ee8042-9aa2-4a7e-8ee9-fdceab6ab3b8.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
+
+	public class PlayerController : MonoBehaviour 
+	{
+		void Update()
+		{
+			// Current state logic and sprite updates
+			movementStateMachine.LogicUpdate();
+			movementStateMachine.SpriteUpdate();	
+		}
+	
+		void FixedUpdate()
+		{
+			// Current state movement and physics updates
+			movementStateMachine.PhysicsUpdate();
+		}
+	}
+
+Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
+
+The following demonstrates this with very simple movement:
+
+	public class WalkState : GroundedState 
+	{
+		public override void PhysicsUpdate()
+		{
+			base.PhysicsUpdate();
+		}
+	}
+	
+	public class GroundedState : PlayerState
+	{
+		public override void PhysicsUpdate()
+		{
+			// Simple movement, directly modifying velocity
+			float horizontalInput = inputActions.HorizontalMoveInput;
+			Vector2 newVelocity = Vector2.zero;
+			if (horizontalInput == 0)
+			{
+				newVelocity.x = 0;
+			}
+			else
+			{
+				newVelocity.x = (horizontalInput > 0) ? playerController.properties.WalkingSpeed : -playerController.properties.WalkingSpeed;
+			}
+			newVelocity.y = 0;
+			playerController.RigidBody2D.velocity = newVelocity;
+		}
+	}
+
 
 
 ## AI & Pathfinding
@@ -27,9 +82,9 @@ I will demonstrate **enemy pathfinding** and specifically mention my impementati
 
 ## Dialogue systems
 
-I will demonstrate dialogue systems across multiple projects. 
-- Ink third party API integration utilised for my **contextual textbox display** system.
-- My own **dialogue and closed captioning system** with audio.
+In *Fallen*, I created a closed captioning system to display dialogue and provide a non-audio source of information for sound effects. 
+
+In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle.](https://www.inklestudios.com/ink/) to display contextual dialogue options and responses.  Variables are updated within the dialogue script and referenced via the Ink for Unity C# API. 
 
 
 ## Area Structure and Save Games
