@@ -82,9 +82,24 @@ I will demonstrate **enemy pathfinding** and specifically mention my impementati
 
 ## Dialogue systems
 
-In *Fallen*, I created a closed captioning system to display dialogue and provide a non-audio source of information for sound effects. 
+In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle](https://www.inklestudios.com/ink/) to display contextual dialogue options and responses. 
 
-In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle.](https://www.inklestudios.com/ink/) to display contextual dialogue options and responses.  Variables are updated within the dialogue script and referenced via the Ink for Unity C# API. 
+Image of Ink markup
+
+The Ink script contains all of the games dialogue and the logic which determines which dialogue to display next. The Ink script is exported in **json** and accessed via the [Ink for Unity C# API](https://github.com/inkle/ink-unity-integration), allowing us to easily determine which dialogue to display on screen based upon the players previous choices and progress.
+
+When we speak with a character, we defer to that characters `decider` section in the Ink script which contains the logic for deciding which text to display. We throw up the dialogue UI and the current line of dialogue and let the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
+
+Image of Unity decider script
+Code deciding what to do with dialogue
+
+In *Fallen*, I created my own closed captioning system to display dialogue and provide a non-audio source of information for sound effects. 
+
+Image of dialogue block
+
+Description of Dialogue blocks, lines and sequential playback.
+
+Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly.
 
 
 ## Area Structure and Save Games
@@ -127,14 +142,3 @@ I will describe my experience of various software development tools in a profess
 - Source Control (Git, Perforce)
 - Agile development, sprints (Azure DevOps, Jira)
 - Teamwork suite
-
-
-
-## Placeholder video embed
-
-Testing a placeholder video embed.
-
-<video src="https://user-images.githubusercontent.com/69112024/143461891-da157848-f3d9-4156-8a6f-d4105aacff7e.mp4" controls="controls" style="max-width: 730px;">
-</video>
-Check video above.
-
