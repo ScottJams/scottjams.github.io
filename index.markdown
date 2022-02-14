@@ -65,7 +65,9 @@ The following demonstrates this with very simple movement:
 			}
 			else
 			{
-				newVelocity.x = (horizontalInput > 0) ? playerController.properties.WalkingSpeed : -playerController.properties.WalkingSpeed;
+				newVelocity.x = (horizontalInput > 0) ? 
+				playerController.properties.WalkingSpeed : 
+				-playerController.properties.WalkingSpeed;
 			}
 			newVelocity.y = 0;
 			playerController.RigidBody2D.velocity = newVelocity;
@@ -110,54 +112,52 @@ The API returns the appropriate dialogue line (or choices). Our `DialogueManager
         // Get current choices
         int choiceCount = story.currentChoices.Count;
 
-        // If the story can't continue and there are no choices, close the dialogue box.
-        if (!story.canContinue && choiceCount == 0)
+        // If there's no line of text to display, display choices or end dialogue
+        if (!story.canContinue)
         {
-            CloseDialogueBox();
-            return;
-        }
+            if (choiceCount == 0)
+            {
+                CloseDialogueBox();
+                return;
+            }
 
-        // Display next set of choices or line of dialogue.
-        // Choices
-        if (choiceCount > 0)
-        {
             DisplayDialogueBox();
             DisplayChoices();
             return;
         }
 
-        // Text
-        if (story.canContinue)
-        {
-            // Continue gets the next line of the story
-            string text = story.Continue();
+        // Gets the next line of the story
+        string text = story.Continue();
 
-            // Check for whitespace - if empty text then skip to next line.
-            if (text == "")
-            {
-                ContinueDialogue();
-            }
-            else
-            {
-                // Show box
-                DisplayDialogueBox();
-                // Removes any white space from the text
-                text = text.Trim();
-                // Display the text on screen
-                CreateContentView(text);
-            }
+        // Display next line unless it's whitespace
+        if (text != "")
+        {
+            // Show box
+            DisplayDialogueBox();
+            // Removes any extra whitespace from the text
+            text = text.Trim();
+            // Display the text on screen
+            CreateContentView(text);
+            return;
         }
+
+        // Empty line found, look for next line
+        ContinueDialogue();
 
     }
 
 
-In *Fallen*, I created my own closed captioning system to display dialogue and provide a non-audio source of information for sound effects. 
+In *Fallen*, I created my own closed captioning system to display dialogue whilst providing a textual source of information for sound effects. 
 
----Video of dialogue and closed caption for sound effect---
+<video src="
+https://user-images.githubusercontent.com/69112024/153856779-6cf8b766-5675-4564-863b-94b6058dc5b9.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
-Description of Dialogue blocks, lines and sequential playback. Discuss timing of each line.
+A `DialogueLine` consists of the `text` to be displayed, the `name` of the speaker, and optionally an `AudioClip` and `AudioSource` for the voice line/sound effect to accompany it. A `DialogueBlock` consists of a `List<DialogueLine>` and a flag for whether or not the block of dialogue has already been played, and whether or not the dialogue is repeatable. 
 
-Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly.
+The `DialogueManager` takes a `DialogueBlock` and plays each `DialogueLine` sequentially, using an asynchronous `IEnumerator`. The `DialogueManager` will wait an appropriate length of time between displaying each `DialogueLine`, using either the length of the supplied `AudioClip` or by varying the delay based upon the length of the text. If a new `DialogueBlock` is passed into the `DialogueManager` whilst one is currently in the process of being displayed, it will be queued up to be played after the current one finishes.
+
+Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly. Another easy change would be to add various font options for displaying the dialogue and closed captions, such as [the OpenDyslexic font.](https://opendyslexic.org/)
 
 
 ## Area Structure and Save Games
@@ -186,10 +186,6 @@ I will demonstrate **dynamic audio** such as tying sound effects to footstep ani
 ## UI and Menus
 
 I will demonstrate various **UI and menu elements**, such as radial menus, health displays and pause/start menus.
-
-
-## Multiplayer & Networking
-
 
 
 ## Other development experience
