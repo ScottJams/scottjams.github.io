@@ -78,9 +78,13 @@ The following demonstrates this with very simple movement:
 
 ## AI & Pathfinding
 
-I will demonstrate enemies using various **movement and attack behaviours** during various states and discuss how it was accomplished.
+In *Project Whimsy*, I created my own implementation of the **A\* pathfinding algorithm** to assist with enemy pathfinding and movement.
 
-I will demonstrate **enemy pathfinding** and specifically mention my impementation of **Astar pathfinding**.
+<video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+// Describe the concept of Astar
+// Describe my implementation of it and provide appropriate code/pseudocode
 
 ## Dialogue systems
 
