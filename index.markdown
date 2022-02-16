@@ -59,11 +59,7 @@ The following demonstrates this with very simple movement:
 			// Simple movement, directly modifying velocity
 			float horizontalInput = inputActions.HorizontalMoveInput;
 			Vector2 newVelocity = Vector2.zero;
-			if (horizontalInput == 0)
-			{
-				newVelocity.x = 0;
-			}
-			else
+			if (horizontalInput != 0)
 			{
 				newVelocity.x = (horizontalInput > 0) ? 
 				playerController.properties.WalkingSpeed : 
@@ -78,13 +74,13 @@ The following demonstrates this with very simple movement:
 
 ## AI & Pathfinding
 
-In *Project Whimsy*, I created my own implementation of the **A\* pathfinding algorithm** to assist with enemy pathfinding and movement.
+In *Project Whimsy*, I created my own implementation of the **A\* pathfinding algorithm** to control enemy pathfinding and movement.
 
 <video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
 // Describe the concept of Astar
-// Describe my implementation of it and provide appropriate code/pseudocode
+// Describe my implementation of it (using Chebyshev distance) and provide appropriate code/pseudocode
 
 ## Dialogue systems
 
