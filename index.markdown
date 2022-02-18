@@ -14,6 +14,16 @@ I'll decribe my **past experience** in professional software development, my deg
 
 I want to highlight my experience in **Unity/UE4** and **C#/C++**
 
+## Contents
+
+-[Player Controllers](#player-controllers)
+-[AI & Pathfinding](#ai-&-pathfinding)
+-[Dialogue Systems](#dialogue-systems)
+-[Animation](#animation)
+-[Shaders](#shaders)
+-[Audio](#audio)
+-[UI & Menus](#ui-&-menus)
+-[Other Development Experience](#other-development-experience)
 
 ## Player Controllers
 
@@ -79,8 +89,13 @@ In *Project Whimsy*, I created my own implementation of the **A\* pathfinding al
 <video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
+
 // Describe the concept of Astar
 // Describe my implementation of it (using Chebyshev distance) and provide appropriate code/pseudocode
+In order to implement this in *Project Whimsy*, I would need 3 components:
+- A way to make a graph of nodes out of each level to use with the algorithm
+- 
+-
 
 ## Dialogue systems
 
@@ -158,13 +173,6 @@ A `DialogueLine` consists of the `text` to be displayed, the `name` of the speak
 The `DialogueManager` takes a `DialogueBlock` and plays each `DialogueLine` sequentially, using an asynchronous `IEnumerator`. The `DialogueManager` will wait an appropriate length of time between displaying each `DialogueLine`, either waiting for the supplied `AudioClip` to finish playing or by varying the delay based upon the length of the text. If a new `DialogueBlock` is passed into the `DialogueManager` whilst one is currently in the process of being displayed, it will be queued up to be played after the current one finishes.
 
 Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly. Another easy change would be to add various font options for displaying the dialogue and closed captions, such as [the OpenDyslexic font.](https://opendyslexic.org/)
-
-
-## Area Structure and Save Games
-
-I will demonstrate how I **serailised game state information** to create save files.
-
-I will demonstrate how areas of the game **spawn actors based upon saved game state** and how **NPCs and objects are contextual with regards to game progress.**
 
 
 ## Animation
