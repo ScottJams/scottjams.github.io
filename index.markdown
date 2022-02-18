@@ -16,14 +16,14 @@ I want to highlight my experience in **Unity/UE4** and **C#/C++**
 
 ## Contents
 
-- [Player Controllers](#player-controllers)
-- [AI & Pathfinding](#ai-&lt;-pathfinding)
-- [Dialogue Systems](#dialogue-systems)
-- [Animation](#animation)
-- [Shaders](#shaders)
-- [Audio](#audio)
-- [UI & Menus](#ui-&lt;-menus)
-- [Other Development Experience](#other-development-experience)
+- [Player Controllers](#player-controllers) 
+- [AI & Pathfinding](#ai-&amp;-pathfinding) 
+- [Dialogue Systems](#dialogue-systems) 
+- [Animation](#animation) 
+- [Shaders](#shaders) 
+- [Audio](#audio) 
+- [UI & Menus](#ui-&amp;-menus) 
+- [Other Development Experience](#other-development-experience) 
 
 ## Player Controllers
 
