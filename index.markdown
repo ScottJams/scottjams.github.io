@@ -22,7 +22,6 @@ I want to highlight my experience in **Unity/UE4** and **C#/C++**
 - [Animation](#animation) 
 - [Shaders](#shaders) 
 - [Audio](#audio) 
-- [UI and Menus](#ui-and-menus) 
 - [Other Development Experience](#other-development-experience) 
 
 ## Player Controllers
@@ -82,20 +81,37 @@ The following demonstrates this with very simple movement:
 
 
 
-## AI & Pathfinding
+## AI and Pathfinding
 
 In *Project Whimsy*, I created my own implementation of the **A\* pathfinding algorithm** to control enemy pathfinding and movement.
 
 <video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
+The basic concept of A* pathfinding can be defined by `F = G + H`, where `F` is the total "Cost" of a given node, `G` is the distance between the node and the starting node, and `H` is a heuristic - an estimate of how far the current node is from the destination. 
 
-// Describe the concept of Astar
-// Describe my implementation of it (using Chebyshev distance) and provide appropriate code/pseudocode
-In order to implement this in *Project Whimsy*, I would need 3 components:
-- A way to make a graph of nodes out of each level to use with the algorithm
-- 
--
+In order to implement this in Unity, I'd need to start with a way to create a graph of nodes to represent each area. Since the gameplay areas in `Project Whimsy` are comprised of 2D `Tilemaps`, I would need some sort of grid (rather than say, a `NavMesh` in a 3D setting). I created a `PathfindingGrid` component which would serve as my method of separating the game world into `PathfindingNode`s and give me a way to iterate through them.
+
+// Image of grid
+
+After generating a suitable grid of nodes, I needed to look through them and figure out a path. By maintaining a list of nodes we want to look through (the `openList`) and nodes we've already looked at (the `closedList`), we can calculate the `F` cost for each node and work our way towards the destination. Once the destination is found, we can work our way backwards to get the finished path. 
+
+The first step is to calculate the F cost for the starting node. G would be zero, since we're at the start. Our H cost is the estimated distance to the destination, ignoring any obstacles. In this case I chose Chebyshev distance as my heuristic, which is a roundabout way of saying you can move diagonally on the grid (8-directional movement). F is simply the total of these two values.
+
+With the initial node calculated, we can begin our main loop:
+- If the current node is the destination, work backwards to return our path.
+- Add current node to the closed list.
+- Look at all the neighbours of the current node which aren't obstacles or on the closed list.
+- If we have a faster path to a neighbour than we previously did, update the neighbours F cost and add to open list.
+
+We iterate this until the current node is the same as the destination node. If we run out of nodes on the open list, then there's no path available to the destination.
+
+To put all of this into action, I combined it with a state machine as outlined earlier on (check [here](#player-controllers)). When the `Player` approaches our "Bee" enemy, it moves into a `Seeking` state and begins searching for a path to the `Player`. When the path is found, we convert it into a `List` of `Vector3` and display them using `DrawRay` for debugging purposes. The enemy moves along these vectors until it reaches the player, where presumably it deals some damage or gives them a nice warm hug.
+
+<video src="https://user-images.githubusercontent.com/69112024/155009972-743d038e-8258-4bbe-ade3-978d16ef9617.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+There are myriad ways to improve upon this implementation. First and foremost, this doesn't account for the size of the collider the enemy has - I'm sure if an enemy was too large or the grid size wasn't suitable then an enemy could easily get stuck. There's a ton of optimisation to be found; as it stands, the main loop is always finding the current nodes neighbours, when these could definitely be stored in advance if the level had static ground obstacles. I'm sure there are many, many more imporvements to be made - for now, this would suffice as a learning experiment!
 
 ## Dialogue systems
 
@@ -190,11 +206,6 @@ I will demonstrate my use of shaders throughout my various projects.
 I will demonstrate my use of **spatial sound** to create interesting atmospheres.
 
 I will demonstrate **dynamic audio** such as tying sound effects to footstep animations and checking the ground type to play contextual audio.
-
-## UI and Menus
-
-I will demonstrate various **UI and menu elements**, such as radial menus, health displays and pause/start menus.
-
 
 ## Other development experience
 
