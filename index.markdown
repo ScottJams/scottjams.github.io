@@ -134,6 +134,19 @@ There are myriad ways to improve upon this implementation. First and foremost, t
 
 ## Dialogue systems
 
+In *Fallen*, I created my own closed captioning system to display dialogue whilst providing a textual source of information for sound effects. 
+
+<video src="
+https://user-images.githubusercontent.com/69112024/153856779-6cf8b766-5675-4564-863b-94b6058dc5b9.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+A `DialogueLine` consists of the `text` to be displayed, the `name` of the speaker, and optionally an `AudioClip` and `AudioSource` for the voice line/sound effect to accompany it. A `DialogueBlock` consists of a `List<DialogueLine>` and flags for whether or not the block of dialogue has already been played, and whether or not the dialogue is repeatable. 
+
+The `DialogueManager` takes a `DialogueBlock` and plays each `DialogueLine` sequentially, using an asynchronous `IEnumerator`. The `DialogueManager` will wait an appropriate length of time between displaying each `DialogueLine`, either waiting for the supplied `AudioClip` to finish playing or by varying the delay based upon the length of the text. If a new `DialogueBlock` is passed into the `DialogueManager` whilst one is currently in the process of being displayed, it will be queued up to be played after the current one finishes.
+
+Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly. Another easy change would be to add various font options for displaying the dialogue and closed captions, such as [the OpenDyslexic font.](https://opendyslexic.org/)
+&nbsp;
+
 In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle](https://www.inklestudios.com/ink/) to display contextual dialogue options and responses. 
 
 <video src="https://user-images.githubusercontent.com/69112024/153493429-8adbd973-761a-4d42-88f0-8c7ba92a63dc.mp4" controls="controls" style="max-width: 730px;">
@@ -182,53 +195,51 @@ private void ContinueDialogue()
 	// Gets the next line of the story
 	string text = story.Continue();
 
-	// Display next line unless it's whitespace
-	if (text != "")
+	// If the next line is whitespace, skip over it
+	if (text == "")
 	{
-		// Show box
-		DisplayDialogueBox();
-		// Removes any extra whitespace from the text
-		text = text.Trim();
-		// Display the text on screen
-		CreateContentView(text);
-		return;
+		ContinueDialogue();
 	}
-
-	// Empty line found, look for next line
-	ContinueDialogue();
+	
+	// Show box
+	DisplayDialogueBox();
+	// Removes any extra whitespace from the text
+	text = text.Trim();
+	// Display the text on screen
+	CreateContentView(text);
+	return;
 }
 ```
 
 </div></details>
 &nbsp;
 
-In *Fallen*, I created my own closed captioning system to display dialogue whilst providing a textual source of information for sound effects. 
-
-<video src="
-https://user-images.githubusercontent.com/69112024/153856779-6cf8b766-5675-4564-863b-94b6058dc5b9.mp4" controls="controls" style="max-width: 730px;">
-</video>
-
-A `DialogueLine` consists of the `text` to be displayed, the `name` of the speaker, and optionally an `AudioClip` and `AudioSource` for the voice line/sound effect to accompany it. A `DialogueBlock` consists of a `List<DialogueLine>` and flags for whether or not the block of dialogue has already been played, and whether or not the dialogue is repeatable. 
-
-The `DialogueManager` takes a `DialogueBlock` and plays each `DialogueLine` sequentially, using an asynchronous `IEnumerator`. The `DialogueManager` will wait an appropriate length of time between displaying each `DialogueLine`, either waiting for the supplied `AudioClip` to finish playing or by varying the delay based upon the length of the text. If a new `DialogueBlock` is passed into the `DialogueManager` whilst one is currently in the process of being displayed, it will be queued up to be played after the current one finishes.
-
-Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly. Another easy change would be to add various font options for displaying the dialogue and closed captions, such as [the OpenDyslexic font.](https://opendyslexic.org/)
-
 
 ## Animation
 
-I will demonstrate blending between animations in both engines and detail usage of **engine specific tools**.
+In *Fallen*, I used an `Animator` to transition between different animations based upon the characters current speed and direction.
+
+In *Moonshot*, I used the `Animation` timeline to create my own animations for the various player states. 
 
 
 ## Shaders
 
-I will demonstrate my use of shaders throughout my various projects.
+In *Fallen*, I used Unity's `ShaderGraph` to display a dissolve effect when interacting with an NPC.
+
+In *Project Whimsy*, I used Unity's `ShaderGraph` to portray a "wind" style effect on trees and their foliage.
 
 
 ## Audio
 
 I will demonstrate my use of **spatial sound** to create interesting atmospheres.
 
+In *Fallen*, I tied sound effects to the player's `Animation` timeline to play sounds during certain animations.
+
+// Video of walking around in Fallen
+
+When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain to avoid repetitiveness.
+
+In *Fallen*, I made 
 I will demonstrate **dynamic audio** such as tying sound effects to footstep animations and checking the ground type to play contextual audio.
 
 ## Other development experience
