@@ -27,7 +27,9 @@ github_username:  ScottJams
 
 # Build settings
 theme: minima
-markdown: redcarpet
+markdown: kramdown
+kramdown:
+  syntax_highlighter: coderay
 plugins:
   - jekyll-feed
 
