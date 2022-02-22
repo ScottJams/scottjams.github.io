@@ -62,7 +62,7 @@ Some states might share a lot of functionality. For example, the actions we are 
 
 
 The following demonstrates this with very simple movement:
-```
+``` c#
 public class WalkState : GroundedState 
 {
 	public override void PhysicsUpdate()
