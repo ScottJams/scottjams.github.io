@@ -34,23 +34,23 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
 
 <details>
-  <summary>Click to expand code</summary>
+	<summary>Click to expand code</summary>
   
-	public class PlayerController : MonoBehaviour 
-	{
-		void Update()
+		public class PlayerController : MonoBehaviour 
 		{
-			// Current state logic and sprite updates
-			movementStateMachine.LogicUpdate();
-			movementStateMachine.SpriteUpdate();	
+			void Update()
+			{
+				// Current state logic and sprite updates
+				movementStateMachine.LogicUpdate();
+				movementStateMachine.SpriteUpdate();	
+			}
+		
+			void FixedUpdate()
+			{
+				// Current state movement and physics updates
+				movementStateMachine.PhysicsUpdate();
+			}
 		}
-	
-		void FixedUpdate()
-		{
-			// Current state movement and physics updates
-			movementStateMachine.PhysicsUpdate();
-		}
-	}
 </details>
 
 
