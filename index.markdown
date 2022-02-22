@@ -34,7 +34,7 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
 
 
-<details><summary>Click here to expand sample code</summary>
+<details><summary><b>Click here to expand sample code</b></summary>
 
 <div markdown="1">
 ``` c#
@@ -57,14 +57,11 @@ public class PlayerController : MonoBehaviour
 
 </div></details>
 &nbsp;
-
-&nbsp;
-
 Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
 
 The following demonstrates this with very simple movement:
 
-<details> <summary>Click here to expand sample code</summary>
+<details> <summary><b>Click here to expand sample code</b></summary>
 
 <div markdown="1">
 ``` c#
@@ -97,10 +94,6 @@ public class GroundedState : PlayerState
 
 </div></details>
 &nbsp;
-
-&nbsp;
-
-
 ## AI and Pathfinding
 
 In *Project Whimsy*, I created my own implementation of the **A\* pathfinding algorithm** to control enemy pathfinding and movement.
@@ -110,7 +103,7 @@ In *Project Whimsy*, I created my own implementation of the **A\* pathfinding al
 
 The basic concept of A* pathfinding can be defined by `F = G + H`, where `F` is the total "Cost" of a given node, `G` is the distance between the node and the starting node, and `H` is a heuristic - an estimate of how far the current node is from the destination. 
 
-<details> <summary>Click here to expand a breakdown of my A* pathfinding implementation</summary>
+<details> <summary><b>Click here to expand a breakdown of my A* pathfinding implementation</b></summary>
 
 <div markdown="1">
 In order to implement this in Unity, I'd need to start with a way to create a graph of nodes to represent each area. Since the gameplay areas in *Project Whimsy* are comprised of 2D `Tilemaps`, I would need some sort of grid (rather than say, a `NavMesh` in a 3D setting). I created a `PathfindingGrid` component which would serve as my method of separating the game world into `PathfindingNode`s and give me a way to iterate through them.
@@ -132,10 +125,6 @@ To put all of this into action, I combined it with a state machine as outlined e
 There are myriad ways to improve upon this implementation. First and foremost, this doesn't account for the size of the collider the enemy has - I'm sure if an enemy was too large or the grid size wasn't suitable then an enemy could easily get stuck. There's a ton of optimisation to be found; as it stands, the main loop is always finding the current nodes neighbours, when these could definitely be stored in advance if the level had static ground obstacles. I'm sure there are many, many more improvements to be made - for now, this would suffice as a learning experiment!
 </div></details>
 &nbsp;
-
-&nbsp;
-
-
 <video src="https://user-images.githubusercontent.com/69112024/155009972-743d038e-8258-4bbe-ade3-978d16ef9617.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
@@ -161,7 +150,7 @@ When we speak with a character, our `DialogueManager` defers to that characters 
 
 The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
 
-<details> <summary>Click here to expand example code</summary>
+<details> <summary><b>Click here to expand example code</b></summary>
 
 <div markdown="1">
 ``` c#
@@ -209,10 +198,6 @@ private void ContinueDialogue()
 
 </div></details>
 &nbsp;
-
-&nbsp;
-
-
 In *Fallen*, I created my own closed captioning system to display dialogue whilst providing a textual source of information for sound effects. 
 
 <video src="
