@@ -37,6 +37,7 @@ A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` c
 <details><summary>CLICK ME</summary>
 <p>
 
+```
 public class PlayerController : MonoBehaviour 
 {
 	void Update()
@@ -52,44 +53,42 @@ public class PlayerController : MonoBehaviour
 		movementStateMachine.PhysicsUpdate();
 	}
 }
+```
 
 </p></details>
 
 
 Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
 
-``` 
-test
-```
 
 The following demonstrates this with very simple movement:
-
-	public class WalkState : GroundedState 
+```
+public class WalkState : GroundedState 
+{
+	public override void PhysicsUpdate()
 	{
-		public override void PhysicsUpdate()
-		{
-			base.PhysicsUpdate();
-		}
+		base.PhysicsUpdate();
 	}
-	
-	public class GroundedState : PlayerState
-	{
-		public override void PhysicsUpdate()
-		{
-			// Simple movement, directly modifying velocity
-			float horizontalInput = inputActions.HorizontalMoveInput;
-			Vector2 newVelocity = Vector2.zero;
-			if (horizontalInput != 0)
-			{
-				newVelocity.x = (horizontalInput > 0) ? 
-				playerController.properties.WalkingSpeed : 
-				-playerController.properties.WalkingSpeed;
-			}
-			newVelocity.y = 0;
-			playerController.RigidBody2D.velocity = newVelocity;
-		}
-	}
+}
 
+public class GroundedState : PlayerState
+{
+	public override void PhysicsUpdate()
+	{
+		// Simple movement, directly modifying velocity
+		float horizontalInput = inputActions.HorizontalMoveInput;
+		Vector2 newVelocity = Vector2.zero;
+		if (horizontalInput != 0)
+		{
+			newVelocity.x = (horizontalInput > 0) ? 
+			playerController.properties.WalkingSpeed : 
+			-playerController.properties.WalkingSpeed;
+		}
+		newVelocity.y = 0;
+		playerController.RigidBody2D.velocity = newVelocity;
+	}
+}
+```
 
 
 ## AI and Pathfinding
@@ -145,48 +144,48 @@ When we speak with a character, our `DialogueManager` defers to that characters 
 
 The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
 
-	private void ContinueDialogue()
-    {
+```
+private void ContinueDialogue()
+{
+	// Remove all current dialogue UI on screen
+	RemoveChildren();
 
-        // Remove all current dialogue UI on screen
-        RemoveChildren();
+	// Get current choices
+	int choiceCount = story.currentChoices.Count;
 
-        // Get current choices
-        int choiceCount = story.currentChoices.Count;
+	// If there's no line of text to display, display choices or end dialogue
+	if (!story.canContinue)
+	{
+		if (choiceCount == 0)
+		{
+			CloseDialogueBox();
+			return;
+		}
 
-        // If there's no line of text to display, display choices or end dialogue
-        if (!story.canContinue)
-        {
-            if (choiceCount == 0)
-            {
-                CloseDialogueBox();
-                return;
-            }
+		DisplayDialogueBox();
+		DisplayChoices();
+		return;
+	}
 
-            DisplayDialogueBox();
-            DisplayChoices();
-            return;
-        }
+	// Gets the next line of the story
+	string text = story.Continue();
 
-        // Gets the next line of the story
-        string text = story.Continue();
+	// Display next line unless it's whitespace
+	if (text != "")
+	{
+		// Show box
+		DisplayDialogueBox();
+		// Removes any extra whitespace from the text
+		text = text.Trim();
+		// Display the text on screen
+		CreateContentView(text);
+		return;
+	}
 
-        // Display next line unless it's whitespace
-        if (text != "")
-        {
-            // Show box
-            DisplayDialogueBox();
-            // Removes any extra whitespace from the text
-            text = text.Trim();
-            // Display the text on screen
-            CreateContentView(text);
-            return;
-        }
-
-        // Empty line found, look for next line
-        ContinueDialogue();
-
-    }
+	// Empty line found, look for next line
+	ContinueDialogue();
+}
+```
 
 
 In *Fallen*, I created my own closed captioning system to display dialogue whilst providing a textual source of information for sound effects. 
