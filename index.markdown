@@ -33,7 +33,10 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 
 A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
 
-	public class PlayerController : MonoBehaviour 
+<details>
+  <summary>Click to see a code snippet</summary>
+  
+  public class PlayerController : MonoBehaviour 
 	{
 		void Update()
 		{
@@ -48,6 +51,7 @@ A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` c
 			movementStateMachine.PhysicsUpdate();
 		}
 	}
+</details>
 
 Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
 
@@ -111,7 +115,7 @@ To put all of this into action, I combined it with a state machine as outlined e
 <video src="https://user-images.githubusercontent.com/69112024/155009972-743d038e-8258-4bbe-ade3-978d16ef9617.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-There are myriad ways to improve upon this implementation. First and foremost, this doesn't account for the size of the collider the enemy has - I'm sure if an enemy was too large or the grid size wasn't suitable then an enemy could easily get stuck. There's a ton of optimisation to be found; as it stands, the main loop is always finding the current nodes neighbours, when these could definitely be stored in advance if the level had static ground obstacles. I'm sure there are many, many more imporvements to be made - for now, this would suffice as a learning experiment!
+There are myriad ways to improve upon this implementation. First and foremost, this doesn't account for the size of the collider the enemy has - I'm sure if an enemy was too large or the grid size wasn't suitable then an enemy could easily get stuck. There's a ton of optimisation to be found; as it stands, the main loop is always finding the current nodes neighbours, when these could definitely be stored in advance if the level had static ground obstacles. I'm sure there are many, many more improvements to be made - for now, this would suffice as a learning experiment!
 
 ## Dialogue systems
 
