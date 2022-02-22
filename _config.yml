@@ -27,6 +27,7 @@ github_username:  ScottJams
 
 # Build settings
 theme: minima
+markdown: redcarpet
 plugins:
   - jekyll-feed
 

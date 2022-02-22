@@ -100,7 +100,7 @@ In *Project Whimsy*, I created my own implementation of the **A\* pathfinding al
 
 The basic concept of A* pathfinding can be defined by `F = G + H`, where `F` is the total "Cost" of a given node, `G` is the distance between the node and the starting node, and `H` is a heuristic - an estimate of how far the current node is from the destination. 
 
-In order to implement this in Unity, I'd need to start with a way to create a graph of nodes to represent each area. Since the gameplay areas in `Project Whimsy` are comprised of 2D `Tilemaps`, I would need some sort of grid (rather than say, a `NavMesh` in a 3D setting). I created a `PathfindingGrid` component which would serve as my method of separating the game world into `PathfindingNode`s and give me a way to iterate through them.
+In order to implement this in Unity, I'd need to start with a way to create a graph of nodes to represent each area. Since the gameplay areas in *Project Whimsy* are comprised of 2D `Tilemaps`, I would need some sort of grid (rather than say, a `NavMesh` in a 3D setting). I created a `PathfindingGrid` component which would serve as my method of separating the game world into `PathfindingNode`s and give me a way to iterate through them.
 
 // Image of grid
 
