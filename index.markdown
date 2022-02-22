@@ -37,7 +37,6 @@ A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` c
 <details><summary>CLICK ME</summary>
 <p>
 
-```c#
 public class PlayerController : MonoBehaviour 
 {
 	void Update()
@@ -53,13 +52,15 @@ public class PlayerController : MonoBehaviour
 		movementStateMachine.PhysicsUpdate();
 	}
 }
+
+</p></details>
+
+
+Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
+
+``` 
+test
 ```
-
-</p>
-</details>
-
-
-1Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
 
 The following demonstrates this with very simple movement:
 
