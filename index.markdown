@@ -33,8 +33,33 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 
 A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
 
+<div markdown="1">
+<details> <summary>**Click here to expand sample code**</summary>
 
-<details> <summary>CLICK ME</summary>
+``` c#
+public class PlayerController : MonoBehaviour 
+{
+	void Update()
+	{
+		// Current state logic and sprite updates
+		movementStateMachine.LogicUpdate();
+		movementStateMachine.SpriteUpdate();	
+	}
+
+	void FixedUpdate()
+	{
+		// Current state movement and physics updates
+		movementStateMachine.PhysicsUpdate();
+	}
+}
+```
+
+</div></details>
+
+
+Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
+
+<details> <summary>Click here to expand sample code</summary>
 
 <div markdown="1">
 ``` c#
@@ -55,12 +80,7 @@ public class PlayerController : MonoBehaviour
 }
 ```
 
-</div></p></details>
-
-
-Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
-
-
+</div></details>
 The following demonstrates this with very simple movement:
 ``` c#
 public class WalkState : GroundedState 
