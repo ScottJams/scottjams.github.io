@@ -34,10 +34,12 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
 
 
-<details><summary>CLICK ME</summary>
-<p>
+<details>
+	<summary>CLICK ME</summary>
+	
+		<p>
 
-```
+``` c#
 public class PlayerController : MonoBehaviour 
 {
 	void Update()
@@ -55,7 +57,8 @@ public class PlayerController : MonoBehaviour
 }
 ```
 
-</p></details>
+		</p>
+</details>
 
 
 Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
@@ -144,7 +147,7 @@ When we speak with a character, our `DialogueManager` defers to that characters 
 
 The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
 
-```
+``` c#
 private void ContinueDialogue()
 {
 	// Remove all current dialogue UI on screen
