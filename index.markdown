@@ -164,7 +164,7 @@ When we speak with a character, our `DialogueManager` defers to that characters 
   <img src="https://user-images.githubusercontent.com/69112024/153217266-437a4c6e-108e-4e82-9177-7dfa6b3514a6.PNG"/>
 </p>
 
-The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
+The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. `ContinueDialogue()` is called as per user input. Once there is no more dialogue to display, we close the UI and gameplay resumes.
 
 <details> <summary><b>Click here to expand example code</b></summary>
 
@@ -217,9 +217,22 @@ private void ContinueDialogue()
 
 ## Animation
 
-In *Fallen*, I used an `Animator` to transition between different animations based upon the characters current speed and direction.
+In *Fallen*, I imported animations from [Mixamo](https://www.mixamo.com) and used an `Animator` to transition between them as appropriate. I also used `Animations` for fading in and out during scene transitions.
 
-In *Moonshot*, I used the `Animation` timeline to create my own animations for the various player states. 
+<video src="https://user-images.githubusercontent.com/69112024/155396952-c836e898-dc3d-484a-a2e4-007956fd6d87.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+Since this was a game jam project, I didn't commit to fully fleshing it out with animations such as rotating in position, moving diagonally, moving backwards and so forth - but it was a good introduction to blending between more complex `Animation` timelines.
+
+In *Moonshot*, I first learned to use the `Animation` timeline to create simple animations for the various player states.
+
+<video src="https://user-images.githubusercontent.com/69112024/155396916-688dc3fd-3b8f-4e11-9622-e8b06c2e8d68.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+I also used `Animators` in this project for basic UI effects, such as when picking up collectibles.
+
+<video src="https://user-images.githubusercontent.com/69112024/155396943-cff7ed08-8685-4cd4-a857-9af3f7fddcfc.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 
 ## Shaders
@@ -233,11 +246,17 @@ In *Project Whimsy*, I used Unity's `ShaderGraph` to portray a "wind" style effe
 
 I will demonstrate my use of **spatial sound** to create interesting atmospheres.
 
+In *Fallen*, I used a lot of spatial audio to contribute to the overall atmosphere.
+
+I also used various `AudioFilters` to create interesting effects, such as a high-pass filter to create this "muffled" sounding argument.
+
+// Video of parents arguing behind doors
+
 In *Fallen*, I tied sound effects to the player's `Animation` timeline to play sounds during certain animations.
 
 // Video of walking around in Fallen
 
-When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain to avoid repetitiveness.
+When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain to avoid repetition.
 
 In *Fallen*, I made 
 I will demonstrate **dynamic audio** such as tying sound effects to footstep animations and checking the ground type to play contextual audio.
