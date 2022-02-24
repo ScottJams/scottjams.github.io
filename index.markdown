@@ -14,7 +14,7 @@ I'll decribe my **past experience** in professional software development, my deg
 
 I want to highlight my experience in **Unity/UE4** and **C#/C++**
 
-## Contents
+## Contents - Unity Projects
 
 - [Player Controllers](#player-controllers) 
 - [AI and Pathfinding](#ai-and-pathfinding) 
@@ -253,9 +253,8 @@ In all of these clips you can see that I tied sound effects to the player's `Ani
 
 ## Other development experience
 
-I will describe my experience of various software development tools in a professional setting.
+I have **at least 2 years professional development experience** using the following platforms, languages, and tools.
 
-- Other platforms (iOS - Swift, Objective C. SQL.)
-- Source Control (Git, Perforce)
-- Agile development, sprints (Azure DevOps, Jira)
-- Teamwork suite
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
+</p>
