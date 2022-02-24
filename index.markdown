@@ -15,7 +15,7 @@ layout: default
 
 ## Itch.io and Github
 
-You can check out some of the game jam projects found in this portfolio below:
+You can check out some of the **game jam projects** found in this portfolio below:
 
 <iframe src="https://itch.io/embed/839543?linkback=true&amp;dark=true" width="300" height="200" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
 
