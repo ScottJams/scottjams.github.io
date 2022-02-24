@@ -17,9 +17,9 @@ layout: default
 
 You can check out some of the **game jam projects** found in this portfolio below:
 
-<iframe src="https://itch.io/embed/839543?linkback=true&amp;dark=true" width="300" height="200" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
+<iframe src="https://itch.io/embed/839543?linkback=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
 
-<iframe src="https://itch.io/embed/1279025?linkback=true&amp;dark=true" width="300" height="200" frameborder="0"><a href="https://scottjams.itch.io/fallen">Fallen by ScottJams</a></iframe>
+<iframe src="https://itch.io/embed/1279025?linkback=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/fallen">Fallen by ScottJams</a></iframe>
 
 And below you can find my GitHub and Itch.io links:
 
