@@ -9,9 +9,7 @@ layout: default
 
 - BSc Computing Science ("Automated tuning of game parameters to create compelling games" - Unity, C#)
 - 2 years as an iOS Developer creating software for major UK airlines (Swift, Objective C, SQL)
-- Currently making the move over to game development. I have spent 1 year learning the following technologies:
-
-// Image of unity/C# and unreal/c++
+- 1 year learning **Unity/C#** and **Unreal Engine 4/C++**
 
 ## Itch.io and Github
 
