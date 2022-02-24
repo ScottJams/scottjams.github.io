@@ -117,7 +117,7 @@ The basic concept of A* pathfinding can be defined by `F = G + H`, where `F` is 
 <details> <summary><b>Click here to expand a breakdown of my A* pathfinding implementation</b></summary>
 
 <div markdown="1">
-In order to implement this in Unity, I'd need to start with a way to create a graph of nodes to represent each area. Since the gameplay areas in *Project Whimsy* are comprised of 2D `Tilemaps`, I would need some sort of grid (rather than say, a `NavMesh` in a 3D setting). I created a `PathfindingGrid` component which would serve as my method of separating the game world into `PathfindingNode`s and give me a way to iterate through them.
+In order to implement this in Unity, I needed to start with a way to create a graph of nodes to represent each area. Since the gameplay areas in *Project Whimsy* are comprised of 2D `Tilemaps`, I required some sort of grid (rather than say, a `NavMesh` in a 3D setting). I created a `PathfindingGrid` component which would serve as my method of separating the game world into `PathfindingNode`s and give me a way to iterate through them.
 
 After generating a suitable grid of nodes, I needed to look through them and figure out a path. By maintaining a list of nodes we want to look through (the `openList`) and nodes we've already looked at (the `closedList`), we can calculate the `F` cost for each node and work our way towards the destination. Once the destination is found, we can work our way backwards to get the finished path. 
 
@@ -133,7 +133,7 @@ We iterate this until the current node is the same as the destination node. If w
 
 To put all of this into action, I combined it with a state machine as outlined earlier on (check [here](#player-controllers)). When the `Player` approaches our "Bee" enemy, it moves into a `Seeking` state and begins searching for a path to the `Player`. When the path is found, we convert it into a `List` of `Vector3` and display them using `DrawRay` for debugging purposes. The enemy moves along these vectors until it reaches the player, where presumably it deals some damage or gives them a nice warm hug.
 
-There are myriad ways to improve upon this implementation. First and foremost, this doesn't account for the size of the collider the enemy has - I'm sure if an enemy was too large or the grid size wasn't suitable then an enemy could easily get stuck. There's a ton of optimisation to be found; as it stands, the main loop is always finding the current nodes neighbours, when these could definitely be stored in advance if the level had static ground obstacles. I'm sure there are many, many more improvements to be made - for now, this would suffice as a learning experiment!
+There are myriad ways to improve upon this implementation. First and foremost, this doesn't account for the size of the collider the enemy has - I'm sure if an enemy was too large or the grid size wasn't suitable then an enemy could easily get stuck. This can be further optimised; as it stands, the main loop is always finding the current nodes neighbours, when these could definitely be stored in advance if the level had static ground obstacles.
 </div></details>
 &nbsp;
 
@@ -153,7 +153,7 @@ A `DialogueLine` consists of the `text` to be displayed, the `name` of the speak
 
 The `DialogueManager` takes a `DialogueBlock` and plays each `DialogueLine` sequentially, using an asynchronous `IEnumerator`. The `DialogueManager` will wait an appropriate length of time between displaying each `DialogueLine`, either waiting for the supplied `AudioClip` to finish playing or by varying the delay based upon the length of the text. If a new `DialogueBlock` is passed into the `DialogueManager` whilst one is currently in the process of being displayed, it will be queued up to be played after the current one finishes.
 
-Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend it's functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages on the fly. Another easy change would be to add various font options for displaying the dialogue and closed captions, such as [the OpenDyslexic font.](https://opendyslexic.org/)
+Considering *Fallen* was a two-week game jam project, the scope of the system was fairly limited. If I were to extend its functionality, I would move the dialogue into dedicated files which can be loaded in at runtime. This would be much more maintainable and would make it much easier to implement features such as displaying alternative languages. Another easy change would be to add various font options for displaying the dialogue and closed captions, such as [the OpenDyslexic font.](https://opendyslexic.org/)
 &nbsp;
 
 In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle](https://www.inklestudios.com/ink/) to display contextual dialogue options and responses. 
@@ -161,7 +161,7 @@ In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle](
 <video src="https://user-images.githubusercontent.com/69112024/153493429-8adbd973-761a-4d42-88f0-8c7ba92a63dc.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-The Ink script contains all of the games dialogue alongside the logic which determines which dialogue to display next. The Ink script is exported in **json** and accessed via the [Ink for Unity C# API](https://github.com/inkle/ink-unity-integration), allowing us to easily determine which dialogue to display on screen based upon the players previous choices and progress.
+The Ink script contains all of the game's dialogue alongside the logic which determines which dialogue to display next. The Ink script is exported in **json** and accessed via the [Ink for Unity C# API](https://github.com/inkle/ink-unity-integration), allowing us to easily determine which dialogue to display on screen based upon the players previous choices and progress.
 
 When we speak with a character, our `DialogueManager` defers to that characters `decider` section in the Ink script which contains the logic for deciding which text to display. 
 
@@ -253,7 +253,7 @@ In *Fallen*, I used a lot of spatial audio to contribute to the overall atmosphe
 <video src="https://user-images.githubusercontent.com/69112024/155536837-264a2cc7-ef18-4295-9b58-58c113f82d5d.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-I also used various `AudioFilters` to create interesting effects, such as a `Low Pass Filter` to create this "muffled" sounding argument.
+I also used various `AudioFilters` to create interesting effects, such as a `Low Pass Filter` to create this muffled-sounding argument.
 
 <video src="https://user-images.githubusercontent.com/69112024/155536869-65668379-b58c-42bb-8790-0d12e43c34c9.mp4" controls="controls" style="max-width: 730px;">
 </video>
@@ -263,7 +263,7 @@ In all of these clips you can see that I tied sound effects to the player's `Ani
 
 ## Other development experience
 
-I have **at least 2 years professional development experience** using the following platforms, languages, and tools:
+In addition to my game development experience, I have **at least 2 years professional development experience** using the following platforms, languages, and tools:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
