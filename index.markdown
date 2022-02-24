@@ -5,16 +5,29 @@
 layout: default
 ---
 
-## Introduction
+## About Me
+
+- BSc Computing Science ("Automated tuning of game parameters to create compelling games" - Unity, C#)
+- 2 years as an iOS Developer creating software for major UK airlines (Swift, Objective C, SQL)
+- Currently making the move over to game development. I have spent 1 year learning the following technologies:
+
+// Image of unity/C# and unreal/c++
+
+## Itch.io and Github
+
+You can check out some of the game jam projects found in this portfolio below:
+
+<iframe src="https://itch.io/embed/839543?linkback=true&amp;dark=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
+
+<iframe src="https://itch.io/embed/1279025?linkback=true&amp;dark=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/fallen">Fallen by ScottJams</a></iframe>
+
+Click the logos below to check out my Itch.io and Github:
+
+[<img src="https://user-images.githubusercontent.com/69112024/155595233-33f63bfb-47a0-4d22-b5b8-f0f76bdb5fec.png">](https://github.com/ScottJams)
+[<img src="https://user-images.githubusercontent.com/69112024/155595141-fbcb892f-531d-422b-90cc-c720e3ba9b71.svg">](https://scottjams.itch.io/)
 
 
-This is a **short** decription of who I am, what I've done and what I'm trying to do.
-
-I'll decribe my **past experience** in professional software development, my degree in Computing Science, and my **transition towards game dev.**
-
-I want to highlight my experience in **Unity/UE4** and **C#/C++**
-
-## Contents - Unity Projects
+## Contents - Unity
 
 - [Player Controllers](#player-controllers) 
 - [AI and Pathfinding](#ai-and-pathfinding) 
@@ -253,7 +266,7 @@ In all of these clips you can see that I tied sound effects to the player's `Ani
 
 ## Other development experience
 
-I have **at least 2 years professional development experience** using the following platforms, languages, and tools.
+I have **at least 2 years professional development experience** using the following platforms, languages, and tools:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
