@@ -17,15 +17,18 @@ layout: default
 
 You can check out some of the game jam projects found in this portfolio below:
 
-<iframe src="https://itch.io/embed/839543?linkback=true&amp;dark=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
+<p align="center">
+<iframe src="https://itch.io/embed/839543?linkback=true&amp;dark=true" width="300" height="200" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
 
-<iframe src="https://itch.io/embed/1279025?linkback=true&amp;dark=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/fallen">Fallen by ScottJams</a></iframe>
+<iframe src="https://itch.io/embed/1279025?linkback=true&amp;dark=true" width="300" height="200" frameborder="0"><a href="https://scottjams.itch.io/fallen">Fallen by ScottJams</a></iframe>
+</p>
 
 Click the logos below to check out my Itch.io and Github:
 
+<p align="center">
 [<img src="https://user-images.githubusercontent.com/69112024/155595726-891831d3-346b-4f32-bf51-2f68e63bc1bb.png" width="552" height="167">](https://github.com/ScottJams)
 [<img src="https://user-images.githubusercontent.com/69112024/155595141-fbcb892f-531d-422b-90cc-c720e3ba9b71.svg" width="552" height="167">](https://scottjams.itch.io/)
-
+</p>
 
 ## Contents - Unity
 
