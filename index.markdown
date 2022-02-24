@@ -20,7 +20,6 @@ I want to highlight my experience in **Unity/UE4** and **C#/C++**
 - [AI and Pathfinding](#ai-and-pathfinding) 
 - [Dialogue Systems](#dialogue-systems) 
 - [Animation](#animation) 
-- [Shaders](#shaders) 
 - [Audio](#audio) 
 - [Other Development Experience](#other-development-experience) 
 
@@ -238,17 +237,19 @@ I also used `Animators` in this project for basic UI effects, such as when picki
 
 In *Fallen*, I used a lot of spatial audio to contribute to the overall atmosphere.
 
-I also used various `AudioFilters` to create interesting effects, such as a high-pass filter to create this "muffled" sounding argument.
+<video src="https://user-images.githubusercontent.com/69112024/155536810-8cdeb24f-300e-4d5c-a0d2-964b1913174b.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
-// Video of parents arguing behind doors
+<video src="https://user-images.githubusercontent.com/69112024/155536837-264a2cc7-ef18-4295-9b58-58c113f82d5d.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
-In *Fallen*, I tied sound effects to the player's `Animation` timeline to play sounds during certain animations.
+I also used various `AudioFilters` to create interesting effects, such as a `Low Pass Filter` to create this "muffled" sounding argument.
 
-// Video of walking around in Fallen
+<video src="https://user-images.githubusercontent.com/69112024/155536869-65668379-b58c-42bb-8790-0d12e43c34c9.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
-When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain in order to avoid repetition.
+In all of these clips you can see that I tied sound effects to the player's `Animation` timeline to play sounds during walking animations. When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain in order to avoid repetition.
 
-I will demonstrate **dynamic audio** such as tying sound effects to footstep animations and checking the ground type to play contextual audio.
 
 ## Other development experience
 
