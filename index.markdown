@@ -7,9 +7,9 @@ layout: default
 
 ## About Me
 
-- BSc Computing Science ("Automated tuning of game parameters to create compelling games" - Unity, C#)
-- 2 years as an iOS Developer creating software for major UK airlines (Swift, Objective C, SQL)
-- 1 year learning **Unity/C#** and **Unreal Engine 4/C++**
+- **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - Unity, C#)
+- **2 years as an iOS Developer** creating software for major UK airlines (Swift, Objective C, SQL)
+- **1 year** learning **Unity/C#** and **Unreal Engine 4/C++**
 
 ## Itch.io and Github
 
