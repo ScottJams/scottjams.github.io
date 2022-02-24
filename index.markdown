@@ -134,7 +134,7 @@ There are myriad ways to improve upon this implementation. First and foremost, t
 
 ## Dialogue systems
 
-In *Fallen*, I created my own closed captioning system to display dialogue whilst providing a textual source of information for sound effects. 
+In *Fallen*, I created my own closed captioning system to display dialogue and provide text descriptions for sound effects. 
 
 <video src="
 https://user-images.githubusercontent.com/69112024/153856779-6cf8b766-5675-4564-863b-94b6058dc5b9.mp4" controls="controls" style="max-width: 730px;">
@@ -234,17 +234,7 @@ I also used `Animators` in this project for basic UI effects, such as when picki
 <video src="https://user-images.githubusercontent.com/69112024/155396943-cff7ed08-8685-4cd4-a857-9af3f7fddcfc.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-
-## Shaders
-
-In *Fallen*, I used Unity's `ShaderGraph` to display a dissolve effect when interacting with an NPC.
-
-In *Project Whimsy*, I used Unity's `ShaderGraph` to portray a "wind" style effect on trees and their foliage.
-
-
 ## Audio
-
-I will demonstrate my use of **spatial sound** to create interesting atmospheres.
 
 In *Fallen*, I used a lot of spatial audio to contribute to the overall atmosphere.
 
@@ -256,9 +246,8 @@ In *Fallen*, I tied sound effects to the player's `Animation` timeline to play s
 
 // Video of walking around in Fallen
 
-When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain to avoid repetition.
+When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain in order to avoid repetition.
 
-In *Fallen*, I made 
 I will demonstrate **dynamic audio** such as tying sound effects to footstep animations and checking the ground type to play contextual audio.
 
 ## Other development experience

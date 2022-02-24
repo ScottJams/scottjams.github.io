@@ -25,6 +25,7 @@ description:
 twitter_username: ScottJamsDev
 github_username:  ScottJams
 
+
 # Build settings
 theme: minima
 markdown: kramdown
