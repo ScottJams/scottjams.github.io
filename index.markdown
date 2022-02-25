@@ -7,11 +7,11 @@ layout: default
 
 ## About Me
 
-Hi, I'm Scott Simpson and I'm a developer based in the UK. I've been a huge gaming enthusiast ever since my first foray with the Sega Master System, and I've been spending a lot of time learning gameplay programming in order to make the jump to games development. Below you will find examples of the projects I've been working on in order to expand my knowledge, whilst having a bit of fun along the way!
+Hi, I'm Scott Simpson and I'm a developer based in the UK. I've been a huge gaming enthusiast ever since my first foray with the Sega Master System, and I've been spending a lot of time learning gameplay programming in order to pursue my passion with games development. Below you will find examples of the projects I've been working on in order to expand my knowledge, whilst having a bit of fun along the way!
 
 ## Experience
 
-- **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - Unity, C#)
+- **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - **Unity, C#**)
 - **2 years as an iOS Developer** creating software for major UK airlines in an Agile environment (Swift, Objective C, SQL)
 - **1 year** learning **Unity/C#** and **Unreal Engine 4/C++**
 
