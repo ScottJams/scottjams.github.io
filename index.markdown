@@ -272,3 +272,8 @@ In addition to my game development experience, I have **at least 2 years profess
 <p align="center">
   <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
 </p>
+
+## Contact me
+
+You can reach me via email at [ScottJamsDev@gmail.com](ScottJamsDev@gmail.com)
+You can also check out my socials at [Twitter](https://twitter.com/ScottJamsDev) and [Github](https://github.com/ScottJams)!
