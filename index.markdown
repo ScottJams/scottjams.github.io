@@ -16,16 +16,28 @@ Hi, I'm Scott Simpson and I'm a Gameplay Programmer based in the UK. Below you w
 - **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - **Unity, C#**)
 - **1 year** Personal experience with **Unreal Engine 4/C++**
 
-## The Catacombs - Turn based tactical roguelite
+## The Catacombs
 
-Below is some WIP footage of my current project *The Catacombs*
+Delve into The Catacombs as a plucky gang of cats, with a bit too much curiosity for their own good!
+*The Catacombs* is a turn-based tactical Roguelite project with an emphasis on narrative, currently being developed by myself. 
 
+Below is some Work in Progress footage of the project, demonstrating the combat system as well as the party forming menu.
+
+# Combat system
 <video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-<video src="https://user-images.githubusercontent.com/69112024/190674460-bac71076-fda1-4830-9af3-22e497e25fe3.mp4" controls="controls" style="max-width: 730px;">
+# Pathfinding
+<video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
+# Roster setup (WIP)
+<video src="https://user-images.githubusercontent.com/69112024/191869430-1a2e3322-9e18-44cb-b760-3c83955504f9.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+# Animation
+<video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 
 ## Itch.io and Github
@@ -92,12 +104,12 @@ Some states might share a lot of functionality. For example, the actions we are 
 
 In *The Catacombs*, I created my own implementation of the **A\* pathfinding algorithm** to control pathfinding and movement for player and enemy units.
 
-In *Project Whimsy*, used a different heuristic to allow characters to have diagonal movement using the same **A\* pathfinding algorithm** I created for *The Catacombs*.
-
-<video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
+<video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-<video src="https://user-images.githubusercontent.com/69112024/155009972-743d038e-8258-4bbe-ade3-978d16ef9617.mp4" controls="controls" style="max-width: 730px;">
+In *Project Whimsy*, I used a different heuristic to allow characters to have diagonal movement using the same implementation of the **A\* pathfinding algorithm** I created for *The Catacombs*.
+
+<video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
 </video>
 &nbsp;
 
@@ -129,6 +141,12 @@ When we speak with a character, our `DialogueManager` defers to that characters 
 The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
 
 ## Animation
+
+In *The Catacombs*, I created, rigged, and animated 2D sprites, making use of Inverse Kinematics to create some "bouncy" animations. These animations were created to suit the "quirky" nature of the cat characters in *The Catacombs*
+
+<video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
 
 In *Fallen*, I imported animations from [Mixamo](https://www.mixamo.com) and used an `Animator` to transition between them as appropriate. I also used `Animations` for fading in and out during scene transitions.
 
