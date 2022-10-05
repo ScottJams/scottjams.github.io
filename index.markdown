@@ -7,7 +7,7 @@ layout: default
 
 ## About Me
 
-Hi, I'm Scott Simpson and I'm a Gameplay Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
+Hi, I'm Scott Simpson and I'm an aspiring Gameplay Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
 
@@ -15,6 +15,13 @@ Hi, I'm Scott Simpson and I'm a Gameplay Programmer based in the UK. Below you w
 - **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **Swift, Objective C, SQL**
 - **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - **Unity, C#**)
 - **1 year** Personal experience with **Unreal Engine 4/C++**
+
+In addition to my game development experience, I have **at least 2 years professional development experience** using the following platforms, languages, and tools:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
+</p>
+
 
 ## The Catacombs
 
@@ -54,7 +61,7 @@ And below you can find my GitHub and Itch.io links:
 - [ScottJams at Itch.io](https://scottjams.itch.io/)
 
 
-## Other Contents - Unity
+## Unity Development Contents
 
 - [Player Controllers](#player-controllers) 
 - [AI and Pathfinding](#ai-and-pathfinding) 
@@ -178,16 +185,8 @@ I also used various `AudioFilters` to create interesting effects, such as a `Low
 In all of these clips you can see that I tied sound effects to the player's `Animation` timeline to play sounds during walking animations. When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain in order to avoid repetition.
 
 
-## Other development experience
-
-In addition to my game development experience, I have **at least 2 years professional development experience** using the following platforms, languages, and tools:
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
-</p>
-
 ## Contact me
 
 You can reach me via email at [ScottJamsDev@gmail.com](ScottJamsDev@gmail.com).
 
-You can also check out my socials at [Twitter](https://twitter.com/ScottJamsDev) and [Github](https://github.com/ScottJams)!
+You can also check out my socials at [Twitter](https://twitter.com/ScottJamsDev) and [Github](https://github.com/ScottJams).
