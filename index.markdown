@@ -12,40 +12,44 @@ Hi, I'm Scott Simpson and I'm an aspiring Gameplay Programmer based in the UK. B
 ## Experience
 
 - **6 months** on *The Catacombs* - A turn based tactical roguelite - **Unity/C#** 
-- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **Swift, Objective C, SQL**
+- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **iOS, Swift, Objective C, SQL**
 - **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - **Unity, C#**)
-- **1 year** Personal experience with **Unreal Engine 4/C++**
-
-In addition to my game development experience, I have **at least 2 years professional development experience** using the following platforms, languages, and tools:
+- **6 months** personal experience with **Unreal Engine 4/C++**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/69112024/155584338-4f1413fe-0a7f-4f51-a161-faaec3e20840.png"/>
+  <img src="https://user-images.githubusercontent.com/69112024/201953148-1b768a59-669a-455f-a31f-2d617ac4ec1c.png"/>
 </p>
 
+&nbsp;
 
-## The Catacombs
+# The Catacombs
 
 Delve into The Catacombs as a plucky gang of cats, with a bit too much curiosity for their own good!
 *The Catacombs* is a turn-based tactical Roguelite project with an emphasis on narrative, currently being developed by myself. 
 
 Below is some Work in Progress footage of the project, demonstrating the combat system as well as the party forming menu.
 
-# Combat system
+## Combat system
 <video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 730px;">
 </video>
+&nbsp;
 
-# Pathfinding
+## Pathfinding
 <video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
 </video>
+&nbsp;
 
-# Roster setup (WIP)
+## Roster setup (WIP)
 <video src="https://user-images.githubusercontent.com/69112024/191869430-1a2e3322-9e18-44cb-b760-3c83955504f9.mp4" controls="controls" style="max-width: 730px;">
 </video>
+&nbsp;
 
-# Animation
+## Animation
 <video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 730px;">
 </video>
+&nbsp;
 
+&nbsp;
 
 ## Itch.io and Github
 
