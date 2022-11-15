@@ -49,8 +49,6 @@ Below is some Work in Progress footage of the project, demonstrating the combat 
 </video>
 &nbsp;
 
-&nbsp;
-
 ## Itch.io and Github
 
 You can check out some of the **game jam projects** found in this portfolio below:
