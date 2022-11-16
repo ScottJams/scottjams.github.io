@@ -17,7 +17,7 @@ Hi, I'm Scott Simpson and I'm an aspiring Gameplay Programmer based in the UK. B
 - **6 months** personal experience with **Unreal Engine 4/C++**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/69112024/201953148-1b768a59-669a-455f-a31f-2d617ac4ec1c.png"/>
+  <img src="https://user-images.githubusercontent.com/69112024/202181274-4e2f2e67-891a-437f-aad4-52934e235f71.png"/>
 </p>
 
 &nbsp;
