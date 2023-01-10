@@ -13,7 +13,7 @@ Hi, I'm Scott Simpson and I'm an aspiring Gameplay Programmer based in the UK. B
 
 - **6 months** on *The Catacombs* - A turn based tactical roguelite - **Unity/C#** 
 - **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **iOS, Swift, Objective C, SQL**
-- **BSc Computing Science** ("Automated tuning of game parameters to create compelling games" - **Unity, C#**)
+- **BSc Computing Science** (Final paper on game development in Unity - **Unity, C#**)
 - **6 months** personal experience with **Unreal Engine 4/C++**
 
 <p align="center">
