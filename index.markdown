@@ -7,7 +7,7 @@ layout: default
 
 ## About Me
 
-Hi, I'm Scott Simpson and I'm a Gameplay Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
+Hi, I'm Scott Simpson and I'm a Unity Developer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
 
@@ -36,11 +36,6 @@ Below is some Work in Progress footage of the project, demonstrating the combat 
 
 ## Pathfinding
 <video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
-</video>
-&nbsp;
-
-## Roster setup (WIP)
-<video src="https://user-images.githubusercontent.com/69112024/191869430-1a2e3322-9e18-44cb-b760-3c83955504f9.mp4" controls="controls" style="max-width: 730px;">
 </video>
 &nbsp;
 
