@@ -11,13 +11,13 @@ Hi, I'm Scott Simpson and I'm an aspiring Gameplay Programmer based in the UK. B
 
 ## Experience
 
-- **6 months** on *The Catacombs* - A turn based tactical roguelite - **Unity/C#** 
-- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **iOS, Swift, Objective C, SQL**
+- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **C#, Objective C, Swift**
 - **BSc Computing Science** (Final paper on game development in Unity - **Unity, C#**)
-- **6 months** personal experience with **Unreal Engine 4/C++**
+- **2 years** experience with **Unity, C#** (University & Personal)
+- **1 year** experience with **Unreal Engine 4, C++** (University & Personal)
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/69112024/202181274-4e2f2e67-891a-437f-aad4-52934e235f71.png"/>
+  <img src="https://github.com/ScottJams/scottjams.github.io/assets/69112024/bd353b7f-3413-4a03-bb5d-c65f4d018a14"/>
 </p>
 
 &nbsp;
@@ -79,34 +79,6 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 <video src="https://user-images.githubusercontent.com/69112024/152352692-f6ee8042-9aa2-4a7e-8ee9-fdceab6ab3b8.mp4" controls="controls" style="max-width: 730px;">
 </video>
 
-<details><summary><b>Click here to expand sample code</b></summary>
-<div markdown="1">
-
-A `PlayerStateMachine` keeps track of the current `PlayerState`. `PlayerState` contains the base functions `LogicUpdate()`, `SpriteUpdate()` and `PhysicsUpdate()`. Individual states inherit from `PlayerState` and add their own behaviour to each of these functions. These functions are then called in the `Update()` and `FixedUpdate()` functions of the `PlayerController` to control our Player.
-
-``` c#
-public class PlayerController : MonoBehaviour 
-{
-	void Update()
-	{
-		// Current state logic and sprite updates
-		movementStateMachine.LogicUpdate();
-		movementStateMachine.SpriteUpdate();	
-	}
-
-	void FixedUpdate()
-	{
-		// Current state movement and physics updates
-		movementStateMachine.PhysicsUpdate();
-	}
-}
-```
-
-Some states might share a lot of functionality. For example, the actions we are able to perform in the `IdleState` and `WalkingState` are largely the same. To avoid code duplication, `GroundedState` inherits from `PlayerState` and adds common behaviours which dictate how our Player can move and act when grounded. `IdleState` and `WalkingState` then derive their base behaviour from `GroundedState` and can add their own specific functionality if required.
-
-</div></details>
-&nbsp;
-
 &nbsp;
 
 ## AI and Pathfinding
@@ -147,7 +119,7 @@ When we speak with a character, our `DialogueManager` defers to that characters 
   <img src="https://user-images.githubusercontent.com/69112024/153217266-437a4c6e-108e-4e82-9177-7dfa6b3514a6.PNG"/>
 </p>
 
-The API returns the appropriate dialogue line (or choices). Our `DialogueManager` pops up the dialogue UI and the current line of dialogue and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
+The API returns the appropriate dialogue line (or choices). Our `DialogueManager` sends an event to the dialogue UI and lets the logic play out in the Ink script. Once there is no more dialogue to display, we close the UI and gameplay resumes.
 
 ## Animation
 
