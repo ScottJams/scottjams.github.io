@@ -7,7 +7,7 @@ layout: default
 
 ## About Me
 
-Hi, I'm Scott Simpson and I'm an aspiring Gameplay Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
+Hi, I'm Scott Simpson and I'm a Gameplay Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
 
