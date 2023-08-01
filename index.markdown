@@ -58,14 +58,189 @@ And below you can find my GitHub and Itch.io links:
 - [ScottJams at Itch.io](https://scottjams.itch.io/)
 
 
-## Unity Development Contents
+## Contents
 
-- [Player Controllers](#player-controllers) 
 - [AI and Pathfinding](#ai-and-pathfinding) 
+- [Player Controllers](#player-controllers) 
 - [Dialogue Systems](#dialogue-systems) 
 - [Animation](#animation) 
 - [Audio](#audio) 
 - [Other Development Experience](#other-development-experience) 
+
+
+
+### AI and Pathfinding
+
+In *The Catacombs*, I created my own implementation of the **A\* pathfinding algorithm** to control pathfinding and movement for player and enemy units.
+
+<video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+## Pathfinding Scope
+
+## 
+
+<details><summary> Click here to expand Pathfinding.cs </summary>
+
+<div markdown="1">
+```csharp 
+public static class Pathfinding
+{
+    #region Public API
+    /// <summary>
+    /// Finds the shortest path between the start node and the target node using the A* pathfinding algorithm.
+    /// </summary>
+    /// <param name="startNode">The starting node of the pathfinding search.</param>
+    /// <param name="targetNode">The target node to path toward.</param>
+    /// <returns>A list of PathfindingNodes representing the shortest path, or an empty list if no path is found.</returns>
+    public static List<PathfindingNode> FindPath(PathfindingNode startNode, PathfindingNode targetNode)
+    {
+        startNode.Grid.ClearPathfindingValues();
+
+        List<PathfindingNode> openList = new List<PathfindingNode>() { startNode };
+        List<PathfindingNode> closedList = new List<PathfindingNode>();
+
+        // Iterate open list until path is found, or open list is empty.
+        while (openList.Count > 0)
+        {
+            PathfindingNode currentNode = openList[0];
+            UpdateCurrentNode(ref openList, ref closedList, ref currentNode);
+
+            // Success condition - Path Found - Stop if target node is added to closed list 
+            if (currentNode == targetNode)
+            {
+                PathfindingNode currentPathNode = targetNode;
+                List<PathfindingNode> path = new List<PathfindingNode>();
+
+                // Going backwards, add each parent of the previous node to the list to get the path.
+                while (currentPathNode != startNode)
+                {
+                    path.Add(currentPathNode);
+                    currentPathNode = currentPathNode.ParentNode;
+                }
+
+                return path;
+            }
+
+            SearchNeighbourNodes(currentNode, ref openList, closedList, targetNode);
+        }
+
+        // No path found - return an empty path
+        return new List<PathfindingNode>();
+    }
+
+    /// <summary>
+    /// Finds and returns the PathfindingNodes within the given range from the start node using the A* pathfinding algorithm.
+    /// </summary>
+    /// <param name="grid">The PathfindingGrid to find a range of nodes on.
+    /// <param name="startNode">The starting node for the range search.</param>
+    /// <param name="maxMovementRange">The maximum movement range from the start node.</param>
+    /// <returns>A list of PathfindingNodes that are within the specified range.</returns>
+    public static List<PathfindingNode> NodesInRange(PathfindingNode startNode, float maxMovementRange)
+    {
+        startNode.Grid.ClearPathfindingValues();
+
+        List<PathfindingNode> openList = new List<PathfindingNode>() { startNode };
+        List<PathfindingNode> closedList = new List<PathfindingNode>();
+        List<PathfindingNode> validNodes = new List<PathfindingNode>();
+
+        // Iterate until open list is empty.
+        while (openList.Count > 0)
+        {
+            PathfindingNode currentNode = openList[0];
+            UpdateCurrentNode(ref openList, ref closedList, ref currentNode);
+
+            // Success Condition - Add to valid movement nodes if F cost is within movement range
+            if (currentNode.F <= maxMovementRange && !validNodes.Contains(currentNode))
+            {
+                currentNode.CurrentlyInRange = true;
+                validNodes.Add(currentNode); 
+            }
+            else
+            {
+                currentNode.CurrentlyInRange = false;
+            }
+
+            SearchNeighbourNodes(currentNode, ref openList, closedList);
+        }
+
+        return validNodes;
+    }
+    #endregion
+
+
+    #region Internal Pathfinding Functions
+    /// <summary>
+    /// Looks for the lowest F cost node on the open list, makes it the current node, and switches it to the closed list.
+    /// </summary>
+    private static void UpdateCurrentNode(ref List<PathfindingNode> openList, 
+        ref List<PathfindingNode> closedList, 
+        ref PathfindingNode currentNode)
+    {
+        foreach (PathfindingNode node in openList)
+        {
+            if (node.F < currentNode.F || (node.F == currentNode.F) && (node.H < currentNode.H))
+                currentNode = node;
+        }
+
+        // Switch current node to the closed list.
+        closedList.Add(currentNode);
+        openList.Remove(currentNode);
+    }
+
+    /// <summary>
+    /// Finds valid neighbour nodes and searches for a better path.
+    /// </summary>
+    private static void SearchNeighbourNodes(PathfindingNode currentNode,
+        ref List<PathfindingNode> openList,
+        List<PathfindingNode> closedList,
+        PathfindingNode targetNode = null)
+    {
+
+        // Get neighbour nodes that are currently traversable and not on the closed list
+        var validNeighbours = currentNode.NeighbourNodes.Where(node => node.Traversable && !closedList.Contains(node));
+
+        foreach (PathfindingNode neighbourNode in validNeighbours)
+        {
+            float costToNeighbour = currentNode.G + currentNode.GetDistance(neighbourNode);
+            bool inOpenList = openList.Contains(neighbourNode);
+
+            // If neighbour is not on the open list, or if neighbour is a better path (lower G), proceed
+            if (inOpenList && costToNeighbour >= neighbourNode.G)
+                continue;
+
+            // Make current node the parent of the adjacent node and recalculate G
+            neighbourNode.SetG(costToNeighbour);
+            neighbourNode.SetParent(currentNode);
+
+            // Target node supplied
+            if (targetNode != null)
+            {
+                // Add neighbour to open list and calculate H
+                neighbourNode.SetH(neighbourNode.GetDistance(targetNode));
+                openList.Add(neighbourNode);
+            }
+            // Target node not supplied
+            else
+            {
+                // Add neighbour to open list and set H to 0
+                neighbourNode.SetH(0);
+                openList.Add(neighbourNode);
+            }
+        }
+
+    }
+    #endregion
+}
+```
+
+
+
+
+</div></details>
+
+&nbsp;
+
 
 ## Player Controllers
 
@@ -76,18 +251,6 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 
 &nbsp;
 
-## AI and Pathfinding
-
-In *The Catacombs*, I created my own implementation of the **A\* pathfinding algorithm** to control pathfinding and movement for player and enemy units.
-
-<video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
-</video>
-
-In *Project Whimsy*, I used a different heuristic to allow characters to have diagonal movement using the same implementation of the **A\* pathfinding algorithm** I created for *The Catacombs*.
-
-<video src="https://user-images.githubusercontent.com/69112024/154096348-64eda84d-e279-40ce-a25c-3890e705801e.mp4" controls="controls" style="max-width: 730px;">
-</video>
-&nbsp;
 
 ## Dialogue systems
 
