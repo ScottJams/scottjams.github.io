@@ -83,7 +83,7 @@ In *The Catacombs*, I created my own implementation of the **A\* pathfinding alg
 <details><summary> Click here to expand Pathfinding.cs </summary>
 
 <div markdown="1">
-```csharp 
+``` c# 
 public static class Pathfinding
 {
     #region Public API
@@ -233,14 +233,215 @@ public static class Pathfinding
     #endregion
 }
 ```
-
-
-
-
 </div></details>
 
 &nbsp;
 
+<details><summary> Click here to expand PathfindingNode.cs </summary>
+
+<div markdown="1">
+``` c# 
+public class PathfindingNode
+{
+    #region Public Properties
+
+    public PathfindingGrid Grid { get; set; }
+
+    /// <summary>
+    /// Whether the PathfindingNode is currently traversable or not. 
+    /// Nodes which are not Traversable will not be able to be pathed through during Pathfinding.
+    /// </summary>
+    public bool Traversable { get; set; }
+
+    /// <summary>
+    /// Whether the node is currently within the current movement range or not.
+    /// </summary>
+    public bool CurrentlyInRange { get; set; }
+    #endregion
+
+    #region Public Access Only
+    /// <summary>
+    /// The PathfindingNodes adjacent to this node.
+    /// </summary>
+    public List<PathfindingNode> NeighbourNodes { get; private set; }
+
+    /// <summary>
+    /// The parent node, used to create a path during pathfinding.
+    /// </summary>
+    public PathfindingNode ParentNode { get; private set; }
+
+    /// <summary>
+    /// The coordinates representing this nodes position on the grid.
+    /// </summary>
+    public NodeCoordinates Coordinates { get; private set; }
+    #endregion
+
+    #region Pathfinding Values
+
+    /// <summary>
+    /// G is the distance between the current node and the start node.
+    /// </summary>
+    public float G { get; private set; }
+
+    /// <summary>
+    /// H is the estimated distance from the current node to the target node.
+    /// </summary>
+    public float H { get; private set; }
+
+    /// <summary>
+    /// F is the total cost of the node.
+    /// </summary>
+    public float F => G + H;
+    #endregion
+   
+    /// <summary>
+    /// A node to be used as part of a PathfindingGrid for pathfinding.
+    /// </summary>
+    /// <param name="traversable">Whether this node is Traversable or not for the purposes of Pathfinding.</param>
+    /// <param name="gridPositionX">This nodes X position on the grid.</param>
+    /// <param name="gridPositionY">This nodes Y position on the grid.</param>
+    public PathfindingNode(bool traversable, float gridPositionX, float gridPositionY) 
+    {
+        Traversable = traversable;
+        Coordinates = new NodeCoordinates(new Vector2(gridPositionX, gridPositionY));
+    }
+
+    #region Public Functions
+
+    /// <summary>
+    /// Stores the neighbours of this node.
+    /// </summary>
+    /// <param name="neighbours">The list of PathfindingNodes to set as this nodes neighbours.</param>
+    public void CacheNeighbours(List<PathfindingNode> neighbours)
+    {
+        NeighbourNodes = neighbours;
+    }
+    
+    /// <summary>
+    /// Sets the parent of this node in order to create a path. 
+    /// </summary>
+    /// <param name="parentNode">The node to set as parent of this node.</param>
+    public void SetParent(PathfindingNode parentNode)
+    {
+        ParentNode = parentNode;
+    }
+
+    /// <summary>
+    /// Sets the G value for this node. G is the distance between the current node and the start node.
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetG(float value)
+    {
+        G = value;
+    }
+
+    /// <summary>
+    /// Sets the H value for this node. H is the estimated distance from the current node to the target node.
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetH(float value)
+    {
+        H = value;
+    }
+
+
+    /// <summary>
+    /// Resets the G and H values of this node.
+    /// </summary>
+    public void ResetCosts()
+    {
+        G = 0;
+        H = 0;
+    }
+
+    /// <summary>
+    /// Gets the distance cost between this node and the target node.
+    /// </summary>
+    /// <param name="target">The target node coordinates.</param>
+    /// <returns></returns>
+    public float GetDistance(PathfindingNode target) => Coordinates.GetDistance(target.Coordinates);
+
+    #endregion
+}
+```
+</div></details>
+
+&nbsp;
+
+<details><summary> Click here to expand PathfindingGrid.cs </summary>
+
+<div markdown="1">
+``` c#
+public class PathfindingGrid
+{
+    /// <summary>
+    /// The list of nodes this grid is comprised of.
+    /// </summary>
+    public List<PathfindingNode> Nodes { get; private set; }
+
+    /// <summary>
+    /// The directions in which to search for neighbours. 
+    /// </summary>
+    private List<Vector2> Directions = new List<Vector2>() {
+        new Vector2(1, 0),
+        new Vector2(-1, 0),
+        new Vector2(0, 1),
+        new Vector2(0, -1)
+    };
+
+    /// <summary>
+    /// Connects a grid of PathfindingNodes by caching the neighbours of all given nodes.
+    /// </summary>
+    /// <param name="nodes">The list of all PathfindingNodes to be included in this grid.</param>
+    public PathfindingGrid(List<PathfindingNode> nodes)
+    {
+        Nodes = nodes;
+        foreach (PathfindingNode node in Nodes)
+        {
+            node.Grid = this;
+            node.CacheNeighbours(GetNeighbours(node));
+        }
+    }
+
+    #region Public Functions
+    /// <summary>
+    /// Resets pathfinding by clearing the F, G and H costs of each PathfindingNode.
+    /// </summary>
+    public void ClearPathfindingValues()
+    {
+        foreach (PathfindingNode node in Nodes)
+            node.ResetCosts();
+    }
+    #endregion
+
+    #region Private Grid Setup Functions
+    /// <summary>
+    /// Returns the neighbours of the given source node using the current directions.
+    /// </summary>
+    private List<PathfindingNode> GetNeighbours(PathfindingNode sourceNode)
+    {
+        List<PathfindingNode> neighbours = new List<PathfindingNode>();
+
+        neighbours.AddRange(Directions.
+    Select(direction => GetNodeAtPosition(sourceNode.Coordinates.Position + direction)).
+    Where(node => node != null));
+
+        return neighbours;
+    }
+
+    /// <summary>
+    /// Returns the PathfindingNode at the given grid position, if it exists.
+    /// </summary>
+    private PathfindingNode GetNodeAtPosition(Vector2 gridPosition)
+    {
+        return Nodes.Where(node => node.Coordinates.Position == gridPosition).FirstOrDefault();
+    }
+    #endregion 
+}
+```
+</div></details>
+
+&nbsp;
 
 ## Player Controllers
 
