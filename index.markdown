@@ -82,7 +82,7 @@ In *The Catacombs*, I created my own implementation of the **A\* pathfinding alg
 
 <details><summary> Click here to expand Pathfinding.cs </summary>
 
-<div markdown="1">
+<div>
 ``` c# 
 public static class Pathfinding
 {
@@ -239,7 +239,7 @@ public static class Pathfinding
 
 <details><summary> Click here to expand PathfindingNode.cs </summary>
 
-<div markdown="1">
+<div>
 ``` c# 
 public class PathfindingNode
 {
@@ -370,7 +370,7 @@ public class PathfindingNode
 
 <details><summary> Click here to expand PathfindingGrid.cs </summary>
 
-<div markdown="1">
+<div>
 ``` c#
 public class PathfindingGrid
 {
