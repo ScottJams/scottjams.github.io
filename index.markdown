@@ -17,31 +17,9 @@ Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find e
 - **1 year** experience with **Unreal Engine 4, C++** (University & Personal)
 
 <p align="center">
-  <img src="https://github.com/ScottJams/scottjams.github.io/assets/69112024/bd353b7f-3413-4a03-bb5d-c65f4d018a14"/>
+  <img src="https://github.com/ScottJams/scottjams.github.io/assets/69112024/bd353b7f-3413-4a03-bb5d-c65f4d018a14" style="max-width: 800px;"/>
 </p>
 
-&nbsp;
-
-# The Catacombs
-
-Delve into The Catacombs as a plucky gang of cats, with a bit too much curiosity for their own good!
-*The Catacombs* is a turn-based tactical Roguelite project with an emphasis on narrative, currently being developed by myself. 
-
-Below is some Work in Progress footage of the project, demonstrating the combat system as well as the party forming menu.
-
-## Combat system
-<video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 730px;">
-</video>
-&nbsp;
-
-## Pathfinding
-<video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
-</video>
-&nbsp;
-
-## Animation
-<video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 730px;">
-</video>
 &nbsp;
 
 ## Itch.io and Github
@@ -68,24 +46,215 @@ And below you can find my GitHub and Itch.io links:
 - [Other Development Experience](#other-development-experience) 
 
 
-
-### AI and Pathfinding
+# AI and Pathfinding
 
 In *The Catacombs*, I created my own implementation of the **A\* pathfinding algorithm** to control pathfinding and movement for player and enemy units.
 
-<video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
 
 ## Pathfinding Scope
 
-## 
+The scope for my pathfinding system for *The Catacombs* was that it should meet the following requirements:
+- Allows for pathfinding across a 2D grid comprised of nodes.
+- Uses the A* pathfinding algorithm.
+- Can return the shortest path, given any two nodes.
+- Can return all the nodes within a given maximum movement range.
 
-<details><summary> Click here to expand Pathfinding.cs </summary>
+## Pathfinding Usage
+
+- Initialise `PathfindingNode` objects, supplying their positions on the grid and whether or not they can be traversed.
+- Initialise a `PathfindingGrid` object, supplying the nodes to be connected on the grid, and optionally the heuristic to use for distance calculations.
+- Call public function `FindPath` on the `PathfindingGrid` to get the path between any two given nodes.
+- Call public function `NodesInRange` on the `PathfindingGrid` to get all of the nodes within a given movement range.
+
+## Pathfinding Code
+
+<details><summary><b> Click here to expand PathfindingNode.cs </b></summary>
 
 <div markdown="1">
 ``` c# 
-public static class Pathfinding
+public class PathfindingNode
 {
+    #region Node Properties
+    /// <summary>
+    /// Whether the PathfindingNode is currently traversable or not. 
+    /// Nodes which are not Traversable will not be able to be pathed through during Pathfinding.
+    /// </summary>
+    public bool Traversable { get; private set; }
+
+    /// <summary>
+    /// Whether the node is currently within the current movement range or not.
+    /// </summary>
+    public bool CurrentlyInRange { get; private set; }
+
+    /// <summary>
+    /// The PathfindingNodes adjacent to this node.
+    /// </summary>
+    public List<PathfindingNode> NeighbourNodes { get; private set; }
+
+    /// <summary>
+    /// The parent node, used to create a path during pathfinding.
+    /// </summary>
+    public PathfindingNode ParentNode { get; private set; }
+
+    /// <summary>
+    /// The coordinates representing this nodes position on the grid.
+    /// </summary>
+    public Vector2 GridCoordinates { get; private set; }
+    #endregion
+
+    #region Pathfinding Values
+    /// <summary>
+    /// G is the distance between the current node and the start node.
+    /// </summary>
+    public float G { get; private set; }
+
+    /// <summary>
+    /// H is the estimated distance from the current node to the target node.
+    /// </summary>
+    public float H { get; private set; }
+
+    /// <summary>
+    /// F is the total cost of the node.
+    /// </summary>
+    public float F => G + H;
+    #endregion
+   
+    /// <summary>
+    /// A node to be used as part of a PathfindingGrid for pathfinding.
+    /// </summary>
+    /// <param name="traversable">Whether this node is Traversable or not for the purposes of Pathfinding.</param>
+    /// <param name="gridPositionX">This nodes X position on the grid.</param>
+    /// <param name="gridPositionY">This nodes Y position on the grid.</param>
+    public PathfindingNode(bool traversable, float gridPositionX, float gridPositionY) 
+    {
+        Traversable = traversable;
+        GridCoordinates = new Vector2(gridPositionX, gridPositionY);
+    }
+
+    #region Public Functions
+
+    /// <summary>
+    /// Stores the neighbours of this node for pathfinding.
+    /// </summary>
+    /// <param name="neighbours">The list of PathfindingNodes to set as this nodes neighbours.</param>
+    public void CacheNeighbours(List<PathfindingNode> neighbours)
+    {
+        NeighbourNodes = neighbours;
+    }
+    
+    /// <summary>
+    /// Sets the parent of this node in order to create a path. 
+    /// </summary>
+    /// <param name="parentNode">The node to set as parent of this node.</param>
+    public void SetParent(PathfindingNode parentNode)
+    {
+        ParentNode = parentNode;
+    }
+
+    /// <summary>
+    /// Sets whether or not this node is currently traversable during pathfinding.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetTraversable(bool value)
+    {
+        Traversable = value;
+    }
+
+    /// <summary>
+    /// Sets whether or not this node is currently in range during amovement range search.
+    /// </summary>
+    /// <param name="value">The value to set.</param>
+    public void SetInRange(bool value)
+    {
+        CurrentlyInRange = value;
+    }
+
+    /// <summary>
+    /// Sets the G value for this node. G is the distance between the current node and the start node.
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetG(float value)
+    {
+        G = value;
+    }
+
+    /// <summary>
+    /// Sets the H value for this node. H is the estimated distance from the current node to the target node.
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetH(float value)
+    {
+        H = value;
+    }
+
+    /// <summary>
+    /// Resets the G and H values of this node.
+    /// </summary>
+    public void ResetCosts()
+    {
+        G = 0;
+        H = 0;
+    }
+    #endregion
+}
+```
+
+</div></details>
+
+&nbsp;
+
+<details><summary><b> Click here to expand PathfindingGrid.cs </b></summary>
+
+<div markdown="1">
+``` c#
+public class PathfindingGrid
+{
+    #region Grid Properties
+    /// <summary>
+    /// The list of nodes this grid is comprised of.
+    /// </summary>
+    public List<PathfindingNode> Nodes { get; private set; }
+
+    /// <summary>
+    /// The directions in which to search for neighbours. 
+    /// </summary>
+    private List<Vector2> _directions;
+
+    /// <summary>
+    /// The current cost to navigate a node.
+    /// </summary>
+    private float _currentMovementCost = 10.0f;
+    #endregion
+
+    /// <summary>
+    /// Connects a grid of PathfindingNodes by caching the neighbours of all given nodes.
+    /// </summary>
+    /// <param name="nodes">The list of all PathfindingNodes to be included in this grid.</param>
+    /// <param name="heuristic">The pathfinding heuristic to use when calculating distance. </param>
+    public PathfindingGrid(List<PathfindingNode> nodes, PathfindingHeuristic heuristic = PathfindingHeuristic.Manhattan)
+    {
+        Nodes = nodes;
+
+        switch (heuristic)
+        {
+            case PathfindingHeuristic.Manhattan:
+                _directions = Manhattan;
+                break;
+            case PathfindingHeuristic.Chebyshev:
+                _directions = Chebyshev;
+                break;
+        }
+
+        foreach (PathfindingNode node in Nodes)
+        {
+            node.CacheNeighbours(GetNeighbours(node));
+        }
+
+    }
+
     #region Public API
     /// <summary>
     /// Finds the shortest path between the start node and the target node using the A* pathfinding algorithm.
@@ -93,10 +262,9 @@ public static class Pathfinding
     /// <param name="startNode">The starting node of the pathfinding search.</param>
     /// <param name="targetNode">The target node to path toward.</param>
     /// <returns>A list of PathfindingNodes representing the shortest path, or an empty list if no path is found.</returns>
-    public static List<PathfindingNode> FindPath(PathfindingNode startNode, PathfindingNode targetNode)
+    public List<PathfindingNode> FindPath(PathfindingNode startNode, PathfindingNode targetNode)
     {
-        startNode.Grid.ClearPathfindingValues();
-
+        ClearPathfindingValues();
         List<PathfindingNode> openList = new List<PathfindingNode>() { startNode };
         List<PathfindingNode> closedList = new List<PathfindingNode>();
 
@@ -136,10 +304,9 @@ public static class Pathfinding
     /// <param name="startNode">The starting node for the range search.</param>
     /// <param name="maxMovementRange">The maximum movement range from the start node.</param>
     /// <returns>A list of PathfindingNodes that are within the specified range.</returns>
-    public static List<PathfindingNode> NodesInRange(PathfindingNode startNode, float maxMovementRange)
+    public List<PathfindingNode> NodesInRange(PathfindingNode startNode, float maxMovementRange)
     {
-        startNode.Grid.ClearPathfindingValues();
-
+        ClearPathfindingValues();
         List<PathfindingNode> openList = new List<PathfindingNode>() { startNode };
         List<PathfindingNode> closedList = new List<PathfindingNode>();
         List<PathfindingNode> validNodes = new List<PathfindingNode>();
@@ -153,12 +320,12 @@ public static class Pathfinding
             // Success Condition - Add to valid movement nodes if F cost is within movement range
             if (currentNode.F <= maxMovementRange && !validNodes.Contains(currentNode))
             {
-                currentNode.CurrentlyInRange = true;
-                validNodes.Add(currentNode); 
+                currentNode.SetInRange(true);
+                validNodes.Add(currentNode);
             }
             else
             {
-                currentNode.CurrentlyInRange = false;
+                currentNode.SetInRange(false);
             }
 
             SearchNeighbourNodes(currentNode, ref openList, closedList);
@@ -166,15 +333,32 @@ public static class Pathfinding
 
         return validNodes;
     }
-    #endregion
 
+    /// <summary>
+    /// Resets pathfinding by clearing the F, G and H costs of each PathfindingNode.
+    /// </summary>
+    public void ClearPathfindingValues()
+    {
+        foreach (PathfindingNode node in Nodes)
+            node.ResetCosts();
+    }
+
+    /// <summary>
+    /// Updates the movement cost for navigating a single node.
+    /// </summary>
+    /// <param name="newValue"></param>
+    public void SetPathfindingCost(float newValue)
+    {
+        _currentMovementCost = newValue;
+    }
+    #endregion
 
     #region Internal Pathfinding Functions
     /// <summary>
     /// Looks for the lowest F cost node on the open list, makes it the current node, and switches it to the closed list.
     /// </summary>
-    private static void UpdateCurrentNode(ref List<PathfindingNode> openList, 
-        ref List<PathfindingNode> closedList, 
+    private void UpdateCurrentNode(ref List<PathfindingNode> openList,
+        ref List<PathfindingNode> closedList,
         ref PathfindingNode currentNode)
     {
         foreach (PathfindingNode node in openList)
@@ -191,7 +375,7 @@ public static class Pathfinding
     /// <summary>
     /// Finds valid neighbour nodes and searches for a better path.
     /// </summary>
-    private static void SearchNeighbourNodes(PathfindingNode currentNode,
+    private void SearchNeighbourNodes(PathfindingNode currentNode,
         ref List<PathfindingNode> openList,
         List<PathfindingNode> closedList,
         PathfindingNode targetNode = null)
@@ -202,7 +386,7 @@ public static class Pathfinding
 
         foreach (PathfindingNode neighbourNode in validNeighbours)
         {
-            float costToNeighbour = currentNode.G + currentNode.GetDistance(neighbourNode);
+            float costToNeighbour = currentNode.G + GetEstimatedDistance(currentNode, neighbourNode);
             bool inOpenList = openList.Contains(neighbourNode);
 
             // If neighbour is not on the open list, or if neighbour is a better path (lower G), proceed
@@ -217,7 +401,7 @@ public static class Pathfinding
             if (targetNode != null)
             {
                 // Add neighbour to open list and calculate H
-                neighbourNode.SetH(neighbourNode.GetDistance(targetNode));
+                neighbourNode.SetH(GetEstimatedDistance(neighbourNode, targetNode));
                 openList.Add(neighbourNode);
             }
             // Target node not supplied
@@ -230,191 +414,30 @@ public static class Pathfinding
         }
 
     }
-    #endregion
-}
-```
-</div></details>
-
-&nbsp;
-
-<details><summary> Click here to expand PathfindingNode.cs </summary>
-
-<div markdown="1">
-``` c# 
-public class PathfindingNode
-{
-    #region Public Properties
-
-    public PathfindingGrid Grid { get; set; }
 
     /// <summary>
-    /// Whether the PathfindingNode is currently traversable or not. 
-    /// Nodes which are not Traversable will not be able to be pathed through during Pathfinding.
+    /// Gets the estimated distance cost between two nodes.
     /// </summary>
-    public bool Traversable { get; set; }
-
-    /// <summary>
-    /// Whether the node is currently within the current movement range or not.
-    /// </summary>
-    public bool CurrentlyInRange { get; set; }
-    #endregion
-
-    #region Public Access Only
-    /// <summary>
-    /// The PathfindingNodes adjacent to this node.
-    /// </summary>
-    public List<PathfindingNode> NeighbourNodes { get; private set; }
-
-    /// <summary>
-    /// The parent node, used to create a path during pathfinding.
-    /// </summary>
-    public PathfindingNode ParentNode { get; private set; }
-
-    /// <summary>
-    /// The coordinates representing this nodes position on the grid.
-    /// </summary>
-    public NodeCoordinates Coordinates { get; private set; }
-    #endregion
-
-    #region Pathfinding Values
-
-    /// <summary>
-    /// G is the distance between the current node and the start node.
-    /// </summary>
-    public float G { get; private set; }
-
-    /// <summary>
-    /// H is the estimated distance from the current node to the target node.
-    /// </summary>
-    public float H { get; private set; }
-
-    /// <summary>
-    /// F is the total cost of the node.
-    /// </summary>
-    public float F => G + H;
-    #endregion
-   
-    /// <summary>
-    /// A node to be used as part of a PathfindingGrid for pathfinding.
-    /// </summary>
-    /// <param name="traversable">Whether this node is Traversable or not for the purposes of Pathfinding.</param>
-    /// <param name="gridPositionX">This nodes X position on the grid.</param>
-    /// <param name="gridPositionY">This nodes Y position on the grid.</param>
-    public PathfindingNode(bool traversable, float gridPositionX, float gridPositionY) 
+    /// <param name="startNode">The starting node.</param>
+    /// <param name="targetNode">The target node.</param>
+    /// <param name="currentMovementCost">The movement cost per node.</param>
+    /// <returns>The estimated distance cost between this node and the target node.</returns>
+    private float GetEstimatedDistance(PathfindingNode startNode, PathfindingNode targetNode)
     {
-        Traversable = traversable;
-        Coordinates = new NodeCoordinates(new Vector2(gridPositionX, gridPositionY));
-    }
 
-    #region Public Functions
+        Vector2 distance = new Vector2
+    (Math.Abs(startNode.GridCoordinates.X - targetNode.GridCoordinates.X),
+    Math.Abs(startNode.GridCoordinates.Y - targetNode.GridCoordinates.Y));
 
-    /// <summary>
-    /// Stores the neighbours of this node.
-    /// </summary>
-    /// <param name="neighbours">The list of PathfindingNodes to set as this nodes neighbours.</param>
-    public void CacheNeighbours(List<PathfindingNode> neighbours)
-    {
-        NeighbourNodes = neighbours;
-    }
-    
-    /// <summary>
-    /// Sets the parent of this node in order to create a path. 
-    /// </summary>
-    /// <param name="parentNode">The node to set as parent of this node.</param>
-    public void SetParent(PathfindingNode parentNode)
-    {
-        ParentNode = parentNode;
-    }
+        float lowestDistance = Math.Min(distance.X, distance.Y);
+        float highestDistance = Math.Max(distance.X, distance.Y);
+        float horizontalMovesRequired = highestDistance - lowestDistance;
 
-    /// <summary>
-    /// Sets the G value for this node. G is the distance between the current node and the start node.
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetG(float value)
-    {
-        G = value;
-    }
-
-    /// <summary>
-    /// Sets the H value for this node. H is the estimated distance from the current node to the target node.
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetH(float value)
-    {
-        H = value;
-    }
-
-
-    /// <summary>
-    /// Resets the G and H values of this node.
-    /// </summary>
-    public void ResetCosts()
-    {
-        G = 0;
-        H = 0;
-    }
-
-    /// <summary>
-    /// Gets the distance cost between this node and the target node.
-    /// </summary>
-    /// <param name="target">The target node coordinates.</param>
-    /// <returns></returns>
-    public float GetDistance(PathfindingNode target) => Coordinates.GetDistance(target.Coordinates);
-
-    #endregion
-}
-```
-</div></details>
-
-&nbsp;
-
-<details><summary> Click here to expand PathfindingGrid.cs </summary>
-
-<div markdown="1">
-``` c#
-public class PathfindingGrid
-{
-    /// <summary>
-    /// The list of nodes this grid is comprised of.
-    /// </summary>
-    public List<PathfindingNode> Nodes { get; private set; }
-
-    /// <summary>
-    /// The directions in which to search for neighbours. 
-    /// </summary>
-    private List<Vector2> Directions = new List<Vector2>() {
-        new Vector2(1, 0),
-        new Vector2(-1, 0),
-        new Vector2(0, 1),
-        new Vector2(0, -1)
-    };
-
-    /// <summary>
-    /// Connects a grid of PathfindingNodes by caching the neighbours of all given nodes.
-    /// </summary>
-    /// <param name="nodes">The list of all PathfindingNodes to be included in this grid.</param>
-    public PathfindingGrid(List<PathfindingNode> nodes)
-    {
-        Nodes = nodes;
-        foreach (PathfindingNode node in Nodes)
-        {
-            node.Grid = this;
-            node.CacheNeighbours(GetNeighbours(node));
-        }
-    }
-
-    #region Public Functions
-    /// <summary>
-    /// Resets pathfinding by clearing the F, G and H costs of each PathfindingNode.
-    /// </summary>
-    public void ClearPathfindingValues()
-    {
-        foreach (PathfindingNode node in Nodes)
-            node.ResetCosts();
+        return (lowestDistance * _currentMovementCost) + (horizontalMovesRequired * _currentMovementCost);
     }
     #endregion
 
-    #region Private Grid Setup Functions
+    #region Internal Grid Setup
     /// <summary>
     /// Returns the neighbours of the given source node using the current directions.
     /// </summary>
@@ -422,8 +445,8 @@ public class PathfindingGrid
     {
         List<PathfindingNode> neighbours = new List<PathfindingNode>();
 
-        neighbours.AddRange(Directions.
-    Select(direction => GetNodeAtPosition(sourceNode.Coordinates.Position + direction)).
+        neighbours.AddRange(_directions.
+    Select(direction => GetNodeAtPosition(sourceNode.GridCoordinates + direction)).
     Where(node => node != null));
 
         return neighbours;
@@ -434,37 +457,82 @@ public class PathfindingGrid
     /// </summary>
     private PathfindingNode GetNodeAtPosition(Vector2 gridPosition)
     {
-        return Nodes.Where(node => node.Coordinates.Position == gridPosition).FirstOrDefault();
+        return Nodes.Where(node => node.GridCoordinates == gridPosition).FirstOrDefault();
     }
-    #endregion 
+
+    private readonly List<Vector2> Chebyshev = new List<Vector2>() {
+                    new Vector2(1, 0),
+                    new Vector2(-1, 0),
+                    new Vector2(0, 1),
+                    new Vector2(0, -1),
+                    new Vector2(1, 1),
+                    new Vector2(1, -1),
+                    new Vector2(-1, 1),
+                    new Vector2(-1, -1)
+                };
+
+    private readonly List<Vector2> Manhattan = new List<Vector2>() {
+                    new Vector2(1, 0),
+                    new Vector2(-1, 0),
+                    new Vector2(0, 1),
+                    new Vector2(0, -1)
+                };
+    #endregion
 }
 ```
 </div></details>
 
 &nbsp;
 
-## Player Controllers
+<details><summary><b> Click here to expand PathfindingHeuristic.cs </b></summary>
+
+<div markdown="1">
+``` c#
+/// <summary>
+/// The pathfinding heuristic to use when calculating distance.
+/// </summary>
+public enum PathfindingHeuristic
+{
+    /// <summary>
+    /// Allows movement in the cardinal directions.
+    /// </summary>
+    Manhattan,
+    /// <summary>
+    /// Allows movement in both cardinal and diagonal directions.
+    /// </summary>
+    Chebyshev
+}
+```
+</div></details>
+&nbsp;
+
+## Pathfinding Example
+<center><video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
+
+# Player Controllers
 
 In *Project Whimsy*, I used a finite state machine to compartmentalise movement and actions into individual states. 
 
-<video src="https://user-images.githubusercontent.com/69112024/152352692-f6ee8042-9aa2-4a7e-8ee9-fdceab6ab3b8.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/152352692-f6ee8042-9aa2-4a7e-8ee9-fdceab6ab3b8.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 &nbsp;
 
 
-## Dialogue systems
+# Dialogue systems
 
 In *Fallen*, I created my own closed captioning system to display dialogue and provide text descriptions for sound effects. 
 
-<video src="
-https://user-images.githubusercontent.com/69112024/153856779-6cf8b766-5675-4564-863b-94b6058dc5b9.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="
+https://user-images.githubusercontent.com/69112024/153856779-6cf8b766-5675-4564-863b-94b6058dc5b9.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 In *Project Whimsy*, I utilised the [Ink narrative scripting language by Inkle](https://www.inklestudios.com/ink/) to display contextual dialogue options and responses. 
 
-<video src="https://user-images.githubusercontent.com/69112024/153493429-8adbd973-761a-4d42-88f0-8c7ba92a63dc.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/153493429-8adbd973-761a-4d42-88f0-8c7ba92a63dc.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 The Ink script contains all of the game's dialogue alongside the logic which determines which dialogue to display next. The Ink script is exported in **json** and accessed via the [Ink for Unity C# API](https://github.com/inkle/ink-unity-integration), allowing us to easily determine which dialogue to display on screen based upon the players previous choices and progress.
 
@@ -484,41 +552,41 @@ The API returns the appropriate dialogue line (or choices). Our `DialogueManager
 
 In *The Catacombs*, I created, rigged, and animated 2D sprites, making use of Inverse Kinematics to create some "bouncy" animations. These animations were created to suit the "quirky" nature of the cat characters in *The Catacombs*
 
-<video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 
 In *Fallen*, I imported animations from [Mixamo](https://www.mixamo.com) and used an `Animator` to transition between them as appropriate. I also used `Animations` for fading in and out during scene transitions.
 
-<video src="https://user-images.githubusercontent.com/69112024/155396952-c836e898-dc3d-484a-a2e4-007956fd6d87.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/155396952-c836e898-dc3d-484a-a2e4-007956fd6d87.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 Since this was a game jam project, I didn't commit to fully fleshing it out with animations such as rotating in position, moving diagonally, moving backwards and so forth - but it was a good introduction to blending between more complex `Animation` timelines.
 
 I also used `Animators` in *Moonshot* for basic UI effects, such as when picking up collectibles.
 
-<video src="https://user-images.githubusercontent.com/69112024/155396943-cff7ed08-8685-4cd4-a857-9af3f7fddcfc.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/155396943-cff7ed08-8685-4cd4-a857-9af3f7fddcfc.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
-## Audio
+# Audio
 
 In *Fallen*, I used a lot of spatial audio to contribute to the overall atmosphere.
 
-<video src="https://user-images.githubusercontent.com/69112024/155536810-8cdeb24f-300e-4d5c-a0d2-964b1913174b.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/155536810-8cdeb24f-300e-4d5c-a0d2-964b1913174b.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
-<video src="https://user-images.githubusercontent.com/69112024/155536837-264a2cc7-ef18-4295-9b58-58c113f82d5d.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/155536837-264a2cc7-ef18-4295-9b58-58c113f82d5d.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 I also used various `AudioFilters` to create interesting effects, such as a `Low Pass Filter` to create this muffled-sounding argument.
 
-<video src="https://user-images.githubusercontent.com/69112024/155536869-65668379-b58c-42bb-8790-0d12e43c34c9.mp4" controls="controls" style="max-width: 730px;">
-</video>
+<center><video src="https://user-images.githubusercontent.com/69112024/155536869-65668379-b58c-42bb-8790-0d12e43c34c9.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
 
 In all of these clips you can see that I tied sound effects to the player's `Animation` timeline to play sounds during walking animations. When the player's foot touches the ground during the `Walking` and `Running` states, an `AnimationEvent` is triggered. A script then checks for which type of ground we're currently walking over (wooden, concrete etc) and plays an appropriate sound effect. There's a good variety of sound effects for each different type of terrain in order to avoid repetition.
 
 
-## Contact me
+# Contact me
 
 You can reach me via email at [ScottJamsDev@gmail.com](ScottJamsDev@gmail.com).
 

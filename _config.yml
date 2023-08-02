@@ -29,8 +29,10 @@ github_username:  ScottJams
 # Build settings
 theme: minima
 markdown: kramdown
+highlighter: rouge
 kramdown:
-  syntax_highlighter: coderay
+  input: GFM
+  syntax_highlighter: rouge
 plugins:
   - jekyll-feed
 
