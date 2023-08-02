@@ -287,7 +287,7 @@ public class PathfindingGrid
                     currentPathNode = currentPathNode.ParentNode;
                 }
 
-                return path;
+                return path;  
             }
 
             SearchNeighbourNodes(currentNode, ref openList, closedList, targetNode);
@@ -306,7 +306,7 @@ public class PathfindingGrid
     /// <returns>A list of PathfindingNodes that are within the specified range.</returns>
     public List<PathfindingNode> NodesInRange(PathfindingNode startNode, float maxMovementRange)
     {
-        ClearPathfindingValues(); 
+        ClearPathfindingValues();  
         List<PathfindingNode> openList = new List<PathfindingNode>() { startNode };
         List<PathfindingNode> closedList = new List<PathfindingNode>();
         List<PathfindingNode> validNodes = new List<PathfindingNode>();
