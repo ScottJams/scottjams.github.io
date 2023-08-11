@@ -50,7 +50,7 @@ And below you can find my GitHub and Itch.io links:
 
 In *The Catacombs*, I created my own implementation of the **A\* pathfinding algorithm** to control pathfinding and movement for player and enemy units.
 
-<center><video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 1050px;">
+<center><video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 1050px;">
 </video></center>
 &nbsp;
 
@@ -75,6 +75,9 @@ The scope for my pathfinding system for *The Catacombs* was that it should meet 
 
 <div markdown="1">
 ``` c# 
+using System.Collections.Generic;
+using System.Numerics;
+
 public class PathfindingNode
 {
     #region Node Properties
@@ -210,6 +213,11 @@ public class PathfindingNode
 
 <div markdown="1">
 ``` c#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+
 public class PathfindingGrid
 {
     #region Grid Properties
@@ -506,7 +514,10 @@ public enum PathfindingHeuristic
 </div></details>
 &nbsp;
 
-## Pathfinding Example
+## Pathfinding Examples
+<center><video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
 <center><video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 1050px;">
 </video></center>
 &nbsp;
