@@ -11,14 +11,14 @@ Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find e
 
 ## Experience
 
-- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **C#, Objective C, Swift**
-- **BSc Computing Science** (Final paper on game development in Unity - **Unity, C#**)
-- **2 years** experience with **Unity, C#** (University & Personal)
-- **1 year** experience with **Unreal Engine 4, C++** (University & Personal)
-
-<p align="center">
-  <img src="https://github.com/ScottJams/scottjams.github.io/assets/69112024/bd353b7f-3413-4a03-bb5d-c65f4d018a14" style="max-width: 800px;"/>
-</p>
+- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
+- **2 years** experience with Unity working on various solo projects such as *The Catacombs* - **Unity, C#**
+    - *The Catacombs* - A turn-based strategy Roguelite, where a plucky gang of cats delve a dungeon to defeat the fearsome Necromeowncer.
+    - *Project Whimsy* - A metroidvania prototype.
+    - *Eye of the Storm* - An old-school survival horror prototype.
+    - Various Game Jam entries such as *Moonshot* and *Fallen*, used as learning tools to develop specific skills.
+- **BSc Computing Science** - Final paper on game development in Unity - **Unity, C#**
+- **1 year** experience with UE4 through University & personal use - **Unreal Engine, C++** 
 
 &nbsp;
 
