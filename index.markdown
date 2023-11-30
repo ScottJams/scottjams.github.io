@@ -601,6 +601,6 @@ In all of these clips you can see that I tied sound effects to the player's `Ani
 
 You can reach me via email at [ScottJamsDev@gmail.com](ScottJamsDev@gmail.com).
 
-You can view my CV/resumé for further information [here](https://github.com/ScottJams/scottjams.github.io/files/12270339/ScottSimpson_CV_Aug23.pdf).
+You can view my CV/resumé for further information [here](https://github.com/ScottJams/scottjams.github.io/files/13511751/ScottSimpson_CV_Nov23.pdf).
 
 You can also check out my socials at [Twitter](https://twitter.com/ScottJamsDev) and [Github](https://github.com/ScottJams).
