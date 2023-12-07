@@ -526,7 +526,7 @@ public enum PathfindingHeuristic
 
 In *The Catacombs*, I created a loot system allowing the player to find and equip new gear as they explore the dungeon.
 
-<center><video src="https://private-user-images.githubusercontent.com/69112024/288801611-6a5b33bf-2190-4d9e-b169-cb8eddb11378.mp4" controls="controls" style="max-width: 1050px;">
+<center><video src="https://user-images.githubusercontent.com/69112024/288801611-6a5b33bf-2190-4d9e-b169-cb8eddb11378.mp4" controls="controls" style="max-width: 1050px;">
 </video></center>
 &nbsp;
 
