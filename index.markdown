@@ -515,11 +515,7 @@ public enum PathfindingHeuristic
 </div></details>
 &nbsp;
 
-## Pathfinding Examples
 <center><video src="https://user-images.githubusercontent.com/69112024/191861894-ecce2ee5-6163-455c-ac71-4c63a6b5778d.mp4" controls="controls" style="max-width: 1050px;">
-</video></center>
-&nbsp;
-<center><video src="https://user-images.githubusercontent.com/69112024/190674421-2027270d-840c-4aaa-8e5c-9051abda7e5c.mp4" controls="controls" style="max-width: 1050px;">
 </video></center>
 &nbsp;
 
@@ -533,6 +529,12 @@ In *The Catacombs*, I created a loot system allowing the player to find and equi
 
 The video shows the character *Mitzi* finishing off an enemy - you can see the attack radius of the unit is set to a 3x3 square. After clearing the round, the player chooses to take a new item - the Tome of Terror!
 After equipping the Tome, the new stats afforded by the item are applied and *Mitzi's* range of attack is increased dramatically, but deals slightly less damage.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/69112024/288807337-504bc880-89db-4756-832e-512d49db6212.png"/>
+</p>
+
+The loot system is designed in a way that makes it incredibly easy to add new equipment to the game. A `LootGenerator` is responsible for deciding which gear to provide to the player from the library of available items, and takes into account various factors such as the items the player currently has and how far through the dungeon the player has progressed. The items exist as simple data containers (such as a `BaseWeapon`) which can be easily added to the `LootGenerator`. A designer can easily create a new item, or adjust an existing item, and modify it's properties without diving into the code and changing anything. When the loot is generated during gameplay, those modifications will be immediately present and ready to test, allowing for the rapid creation of extra game content. 
 
 &nbsp;
 
