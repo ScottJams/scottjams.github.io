@@ -39,6 +39,7 @@ And below you can find my GitHub and Itch.io links:
 ## Contents
 
 - [AI and Pathfinding](#ai-and-pathfinding) 
+- [Loot System](#loot-system) 
 - [Player Controllers](#player-controllers) 
 - [Dialogue Systems](#dialogue-systems) 
 - [Animation](#animation) 
