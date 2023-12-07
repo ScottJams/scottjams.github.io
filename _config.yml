@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Scott Simpson - Gameplay programming portfolio
+title: Scott Simpson - Game development portfolio
 email: ScottJamsDev@gmail.com
 description:  
-  Gameplay programming portfolio for Scott Simpson.
+  Game development portfolio for Scott Simpson.
 twitter_username: ScottJamsDev
 github_username:  ScottJams
 
