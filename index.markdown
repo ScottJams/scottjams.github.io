@@ -522,6 +522,19 @@ public enum PathfindingHeuristic
 </video></center>
 &nbsp;
 
+# Loot System
+
+In *The Catacombs*, I created a loot system allowing the player to find and equip new gear as they explore the dungeon.
+
+<center><video src="https://private-user-images.githubusercontent.com/69112024/288801611-6a5b33bf-2190-4d9e-b169-cb8eddb11378.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
+
+The video shows the character *Mitzi* finishing off an enemy - you can see the attack radius of the unit is set to a 3x3 square. After clearing the round, the player chooses to take a new item - the Tome of Terror!
+After equipping the Tome, the new stats afforded by the item are applied and *Mitzi's* range of attack is increased dramatically, but deals slightly less damage.
+
+&nbsp;
+
 # Player Controllers
 
 In *Project Whimsy*, I used a finite state machine to compartmentalise movement and actions into individual states. 
