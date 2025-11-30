@@ -26,11 +26,23 @@ Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find e
 
 You can check out some of the **game jam projects** found in this portfolio below:
 
-<iframe src="https://itch.io/embed/2694166?linkback=true" width="552" height="167" frameborder="0"></iframe>
+<div class="itchio-widget">
+  <iframe src="https://itch.io/embed/2694166?linkback=true" width="552" height="167" frameborder="0"></iframe>
+</div>
 
-<iframe src="https://itch.io/embed/839543?linkback=true" width="552" height="167" frameborder="0"></iframe>
+<div class="itchio-widget">
+  <iframe src="https://itch.io/embed/839543?linkback=true" width="552" height="167" frameborder="0"></iframe>
+</div>
 
-<iframe src="https://itch.io/embed/1279025?linkback=true" width="552" height="167" frameborder="0"></iframe>
+<div class="itchio-widget">
+  <iframe src="https://itch.io/embed/1279025?linkback=true" width="552" height="167" frameborder="0"></iframe>
+</div>
+
+And below you can find my GitHub and Itch.io links:
+
+- [ScottJams at GitHub](https://github.com/ScottJams)  
+- [ScottJams at Itch.io](https://scottjams.itch.io/)
+
 
 And below you can find my GitHub and Itch.io links:
 
