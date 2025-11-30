@@ -10,13 +10,10 @@ layout: default
 Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
-- **Test**
-- **2 years as an iOS Developer** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
-- **2 years** experience with Unity working on various solo projects such as *The Catacombs* - **Unity, C#**
-    - *The Catacombs* - A turn-based strategy Roguelite, where a plucky gang of cats delve a dungeon to defeat the fearsome Necromeowncer.
-    - *Project Whimsy* - A metroidvania prototype.
-    - *Eye of the Storm* - An old-school survival horror prototype.
-    - Various Game Jam entries such as *Moonshot* and *Fallen*, used as learning tools to develop specific skills.
+- **Coatsink - Programmer - 2 years** - Lead Developer on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501) for the Facebook Instant Gaming platform. **Unity, C#, JavaScript, Node.JS, AWS**
+- **Programmer - 2 years** experience with Unity working on various indie projects such as *The Catacombs* - **Unity, C#**
+- **Evoke Systems - Junior iOS Developer - 2 years** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
+
 - **BSc Computing Science** - Final paper on game development in Unity - **Unity, C#**
 - **1 year** experience with UE4 through University & personal use - **Unreal Engine, C++** 
 
