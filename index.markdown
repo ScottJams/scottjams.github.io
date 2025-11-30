@@ -10,7 +10,7 @@ layout: default
 Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
-- **Coatsink - Programmer - 2 years** - Lead Developer on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501) for the Facebook Instant Gaming platform. **Unity, C#, JavaScript, Node.JS, AWS**
+- **Coatsink - Programmer - 2 years** - Lead Developer on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501) for the Facebook Instant Gaming platform - **Unity, C#, JavaScript, Node.JS, AWS**
 - **Programmer - 2 years** experience with Unity working on various indie projects such as *The Catacombs* - **Unity, C#**
 - **Evoke Systems - Junior iOS Developer - 2 years** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
 
@@ -628,6 +628,6 @@ In all of these clips you can see that I tied sound effects to the player's `Ani
 
 You can reach me via email at [ScottJamsDev@gmail.com](ScottJamsDev@gmail.com).
 
-You can view my CV/resumé for further information [here](https://github.com/ScottJams/scottjams.github.io/files/13511751/ScottSimpson_CV_Nov23.pdf).
+You can view my CV/resumé for further information [here](https://github.com/user-attachments/files/23842468/ScottSimpson_CV_Dec2025.pdf).
 
-You can also check out my socials at [Twitter](https://twitter.com/ScottJamsDev) and [Github](https://github.com/ScottJams).
+You can also check out my socials at [LinkedIn](https://www.linkedin.com/in/scott-simpson-ab6254252/) and [Github](https://github.com/ScottJams).
