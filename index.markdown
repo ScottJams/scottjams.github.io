@@ -26,7 +26,7 @@ Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find e
 
 You can check out some of the **game jam projects** found in this portfolio below:
 
-<iframe src="https://itch.io/embed/2694166?dark=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams</a></iframe>
+<iframe src="https://itch.io/embed/2694166?linkback=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams</a></iframe>
 
 <iframe src="https://itch.io/embed/839543?linkback=true" width="552" height="167" frameborder="0"><a href="https://scottjams.itch.io/moonshot-2020">Moonshot 2020 by ScottJams</a></iframe>
 
