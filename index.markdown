@@ -33,7 +33,7 @@ Examples of core features I have developed on Ready, Set, Cook!:
 
 ## Game Jam Projects - Programmer
 
-You can check out some of the **game jam projects** found in this portfolio below:
+You can check out some of my **game jam projects** below:
 
 <div class="itchio-widget">
   <iframe frameborder="0" src="https://itch.io/embed/2694166?dark=true" width="552" height="167"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams, Vurj, Illidave Stormdave, Errol 🦇</a></iframe>
