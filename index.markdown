@@ -19,7 +19,7 @@ Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will
 &nbsp;
 
 ## Coatsink - Programmer - 2 Years
-I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). 
+I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501)
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/06684cc1-4b3d-4df0-9fdd-0967d7be17a6"/>
