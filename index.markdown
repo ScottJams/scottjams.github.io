@@ -7,19 +7,31 @@ layout: default
 
 ## About Me
 
-Hi, I'm Scott Simpson and I'm a Developer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
+Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
 - **Coatsink - Programmer - 2 years** - Lead Developer on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501) for the Facebook Instant Gaming platform - **Unity, C#, JavaScript, Node.JS, AWS**
 - **Programmer - 2 years** experience with Unity working on various indie projects such as *The Catacombs* - **Unity, C#**
 - **Evoke Systems - Junior iOS Developer - 2 years** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
-
 - **BSc Computing Science** - Final paper on game development in Unity - **Unity, C#**
 - **1 year** experience with UE4 through University & personal use - **Unreal Engine, C++** 
 
 &nbsp;
 
-## Itch.io and Github
+## Coatsink - Programmer - 2 Years
+I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/06684cc1-4b3d-4df0-9fdd-0967d7be17a6"/>
+</p>
+
+Examples of core features I have developed on Ready, Set, Cook!:
+- Lead the development of a new single-player version of the game, adapting the project from Messenger Calls to the Instant Gaming platform.
+- Utilised emerging Facebook APIs, collaborating with Meta engineers to integrate new social features such as Tournaments.
+- Implemented completely new mechanics such as "Active Cooking", working with Design, Art and Audio departments from inception to production. 
+- Worked with Unity and other engineers on my team to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [(https://unity.com/resources/coatsink-ready-set-cook)]https://unity.com/resources/coatsink-ready-set-cook
+
+## Game Jam Projects - Programmer
 
 You can check out some of the **game jam projects** found in this portfolio below:
 
@@ -47,7 +59,7 @@ And below you can find my GitHub and Itch.io links:
 - [ScottJams at Itch.io](https://scottjams.itch.io/)
 
 
-## Contents
+<!-- ## Contents
 
 - [AI and Pathfinding](#ai-and-pathfinding) 
 - [Loot System](#loot-system) 
@@ -55,10 +67,10 @@ And below you can find my GitHub and Itch.io links:
 - [Dialogue Systems](#dialogue-systems) 
 - [Animation](#animation) 
 - [Audio](#audio) 
-- [Other Development Experience](#other-development-experience) 
+- [Other Development Experience](#other-development-experience)  -->
 
 
-# AI and Pathfinding
+## The Catacombs - Programmer
 
 In *The Catacombs*, I created my own implementation of the **A\* pathfinding algorithm** to control pathfinding and movement for player and enemy units.
 
