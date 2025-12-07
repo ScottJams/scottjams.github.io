@@ -29,7 +29,7 @@ Examples of core features I have developed on Ready, Set, Cook!:
 - Lead the development of a new single-player version of the game, adapting the project from Messenger Calls to the Instant Gaming platform.
 - Utilised emerging Facebook APIs, collaborating with Meta engineers to integrate new social features such as Tournaments.
 - Implemented completely new mechanics such as "Active Cooking", working with Design, Art and Audio departments from inception to production. 
-- Worked with Unity and other engineers on my team to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook)
+- Worked with Unity and other engineers on my team to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
 
 ## Game Jam Projects - Programmer
 
