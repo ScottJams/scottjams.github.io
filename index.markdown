@@ -53,13 +53,6 @@ And below you can find my GitHub and Itch.io links:
 - [ScottJams at GitHub](https://github.com/ScottJams)  
 - [ScottJams at Itch.io](https://scottjams.itch.io/)
 
-
-And below you can find my GitHub and Itch.io links:
-
-- [ScottJams at GitHub](https://github.com/ScottJams)
-- [ScottJams at Itch.io](https://scottjams.itch.io/)
-
-
 <!-- ## Contents
 
 - [AI and Pathfinding](#ai-and-pathfinding) 
