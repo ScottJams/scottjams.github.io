@@ -10,7 +10,7 @@ layout: default
 Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will find examples of the projects I've been working on and my previous experience as a developer.
 
 ## Experience
-- **Coatsink - Programmer - 2 years** - Lead Developer on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501) for the Facebook Instant Gaming platform - **Unity, C#, JavaScript, Node.JS, AWS**
+- **Coatsink - Programmer - 2 years** - My current position, working as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501) for the Facebook Instant Gaming platform - **Unity, C#, JavaScript, Node.JS, AWS**
 - **Programmer - 2 years** experience with Unity working on various indie projects such as *The Catacombs* - **Unity, C#**
 - **Evoke Systems - Junior iOS Developer - 2 years** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
 - **BSc Computing Science** - Final paper on game development in Unity - **Unity, C#**
@@ -18,25 +18,26 @@ Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will
 
 &nbsp;
 
-## Coatsink - Programmer - 2 Years
-I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501)
+## Current Position - Programmer at Coatsink - 2 Years
+I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). Ready, Set, Cook! is hosted on the Facebook Instant Gaming platform, and attracts over 2 million unique Monthly Active Users
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/06684cc1-4b3d-4df0-9fdd-0967d7be17a6"/>
 </p>
 
-Examples of core features I have developed on Ready, Set, Cook!:
+Some examples of my work on Ready, Set, Cook!:
 - Lead the development of a new single-player version of the game, adapting the project from Messenger Calls to the Instant Gaming platform.
-- Utilised emerging Facebook APIs, collaborating with Meta engineers to integrate new social features such as Tournaments.
-- Implemented completely new mechanics such as "Active Cooking", working with Design, Art and Audio departments from inception to production. 
+- Implemented completely new gameplay mechanics for single-player levels, working with Design, Art and Audio departments from inception to production. 
+- Worked directly with Meta engineers to integrate brand-new Facebook APIs, allowing us to add new social features such as Tournaments to the game.
+- Manage the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involves the maintenance and monitoring of the live game servers, as well as the creation of additional Cloud infrastructure when required.
 - Worked with Unity and other engineers on my team to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
 
-## Game Jam Projects - Programmer
+## Previous Experience and Projects
 
 You can check out some of my **game jam projects** below:
 
 <div class="itchio-widget">
-  <iframe frameborder="0" src="https://itch.io/embed/2694166?dark=true" width="552" height="167"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams, Vurj, Illidave Stormdave, Errol 🦇</a></iframe>
+  <iframe frameborder="0" src="https://itch.io/embed/2694166?linkback=true" width="552" height="167"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams, Vurj, Illidave Stormdave, Errol 🦇</a></iframe>
 </div>
 
 <div class="itchio-widget">
