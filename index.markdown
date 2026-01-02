@@ -30,7 +30,7 @@ Some examples of my work on Ready, Set, Cook!:
 - Implemented completely new gameplay mechanics for single-player levels, working with Design, Art and Audio departments from inception to production. 
 - Worked directly with Meta engineers to integrate brand-new Facebook APIs, allowing us to add new social features such as Tournaments to the game.
 - Manage the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involves the maintenance and monitoring of the live game servers, as well as the creation of additional Cloud infrastructure when required.
-- Worked with Unity and other engineers on my team to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
+- Worked with Unity and other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
 
 ## Previous Experience and Projects
 
