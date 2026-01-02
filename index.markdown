@@ -36,15 +36,15 @@ Some examples of my work on Ready, Set, Cook!:
 
 You can check out some of my **game jam projects** below:
 
-<div class="itchio-widget">
+<div>
   <iframe frameborder="0" src="https://itch.io/embed/2694166?bg_color=141413&amp;fg_color=E2D6BA&amp;link_color=E2D6BA&amp;border_color=434342" width="552" height="167"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams, Vurj, Illidave Stormdave, Errol 🦇</a></iframe>
 </div>
 
-<div class="itchio-widget">
+<div>
   <iframe src="https://itch.io/embed/839543?bg_color=12162e&amp;fg_color=ffffff&amp;link_color=5a95de&amp;border_color=37404e" width="552" height="167" frameborder="0"></iframe>
 </div>
 
-<div class="itchio-widget">
+<div>
   <iframe src="https://itch.io/embed/1279025?bg_color=373737&amp;fg_color=ffffff&amp;link_color=ffffff&amp;border_color=5f5f5f" width="552" height="167" frameborder="0"></iframe>
 </div>
 
