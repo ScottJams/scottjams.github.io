@@ -18,7 +18,7 @@ Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will
 
 &nbsp;
 
-## Current Position - Programmer at Coatsink - 2 Years
+## Coatsink - Programmer - 2 Years
 I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). Ready, Set, Cook! is hosted on the Facebook Instant Gaming platform, and attracts over 2 million unique Monthly Active Users
 
 <p align="center">
@@ -37,15 +37,15 @@ Some examples of my work on Ready, Set, Cook!:
 You can check out some of my **game jam projects** below:
 
 <div class="itchio-widget">
-  <iframe frameborder="0" src="https://itch.io/embed/2694166?linkback=true" width="552" height="167"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams, Vurj, Illidave Stormdave, Errol 🦇</a></iframe>
+  <iframe frameborder="0" src="https://itch.io/embed/2694166?bg_color=141413&amp;fg_color=E2D6BA&amp;link_color=E2D6BA&amp;border_color=434342" width="552" height="167"><a href="https://scottjams.itch.io/bete-epoque-horror-in-paris">Bête Epoque: Horror in Paris by ScottJams, Vurj, Illidave Stormdave, Errol 🦇</a></iframe>
 </div>
 
 <div class="itchio-widget">
-  <iframe src="https://itch.io/embed/839543?linkback=true" width="552" height="167" frameborder="0"></iframe>
+  <iframe src="https://itch.io/embed/839543?bg_color=12162e&amp;fg_color=ffffff&amp;link_color=5a95de&amp;border_color=37404e" width="552" height="167" frameborder="0"></iframe>
 </div>
 
 <div class="itchio-widget">
-  <iframe src="https://itch.io/embed/1279025?linkback=true" width="552" height="167" frameborder="0"></iframe>
+  <iframe src="https://itch.io/embed/1279025?bg_color=373737&amp;fg_color=ffffff&amp;link_color=ffffff&amp;border_color=5f5f5f" width="552" height="167" frameborder="0"></iframe>
 </div>
 
 And below you can find my GitHub and Itch.io links:
