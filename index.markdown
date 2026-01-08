@@ -101,7 +101,7 @@ Alongside solo gameplay with new mechanics, I had to allow for the original mult
 &nbsp;
 
 ## Optimisation 
-I worked with Unity alongside other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: https://unity.com/resources/coatsink-ready-set-cook.
+I worked with Unity alongside other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
 
 ## DevOps Responsibilities
 I managed the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involved the maintenance and monitoring of the live game servers on AWS. I was also responsible for the creation of additional Cloud infrastructure to support the new version of Ready, Set, Cook!
@@ -707,6 +707,6 @@ In all of these clips you can see that I tied sound effects to the player's `Ani
 
 You can reach me via email at [ScottJamsDev@gmail.com](ScottJamsDev@gmail.com).
 
-You can view my CV/resumé for further information [here](https://github.com/user-attachments/files/23842468/ScottSimpson_CV_Dec2025.pdf).
+You can view my CV/resumé for further information [here](/assets/documents/ScottSimpson_CV_Jan2026.pdf).
 
 You can also check out my socials at [LinkedIn](https://www.linkedin.com/in/scott-simpson-ab6254252/) and [Github](https://github.com/ScottJams).
