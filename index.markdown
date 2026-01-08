@@ -18,7 +18,7 @@ Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will
 
 &nbsp;
 
-## Coatsink - Programmer - 2 Years
+# Coatsink - Programmer - 2 Years
 I currently work as a Programmer at Coatsink, acting as the Code Lead on the online co-op cooking game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). RSC is playable on the Facebook Instant Gaming platform, and attracts over 2 million unique Monthly Active Users.
 
 <p align="center">
@@ -33,16 +33,22 @@ Project highlights:
 - Manage the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involves the maintenance and monitoring of the live game servers, as well as the creation of additional Cloud infrastructure when required.
 - Worked with Unity and other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
 
-# Single-Player Adaptation
+## Single-Player Adaptation
 I was tasked with creating a new version of the game for the Instant Gaming platform. This involved analysing the client-server architecture of the project, identifying the scope of the work necessary, and putting together a proposal for how to approach it.
 
 I created new levels for the single-player game mode, working with Art and Design to adapt the game for a solo experience. I also created a tutorial stage introducing players to the single-player version - this required developing a new RPC system to pause the gameplay flow at critical moments, whilst making sure that key systems continued to operate server-side.
 
-<center><video src="https://private-user-images.githubusercontent.com/69112024/533425355-70907911-b889-4c26-a784-4f41228da97c.mp4" controls="controls" style="max-width: 1050px;">
-</video></center>
+<center>
+  <video
+    src="/assets/videos/TutorialCompressed.mp4"
+    controls="controls"
+    style="max-width: 1050px;"
+  >
+  </video>
+</center>
 &nbsp;
 
-# New Gameplay Mechanics
+## New Gameplay Mechanics
 I implemented completely new gameplay mechanics for single-player levels, working with Design, Art and Audio departments from inception to production. 
 
 The video below demonstrates several new features:
@@ -50,46 +56,64 @@ The video below demonstrates several new features:
 - The ticket queue, which displays orders at the bottom of the screen as they come in. The player can tap an order to expand it and view the recipe for creating that dish, and all of the order tickets will react accordingly to keep all of the views on screen.
 - The restaurant meter bar, which tracks the fail state of the game. This meter listens to incoming events as customers lose patience waiting for orders, and partially refills when orders are successfully completed.
 
-<center><video src="https://private-user-images.githubusercontent.com/69112024/533426872-7a5da25e-b9b7-47de-8c22-8c0f4af97968.mp4" controls="controls" style="max-width: 1050px;">
-</video></center>
+<center>
+  <video
+    src="/assets/videos/ActiveCookingCompressed.mp4"
+    controls="controls"
+    style="max-width: 1050px;"
+  >
+  </video>
+</center>
 &nbsp;
 
 After settling on the design of the Active Cooking timer, I implemented a more robust version, utilising a state machine to handle update logic as the player makes various choices. I also implemented a generic *Timed Buffs* system, which enabled a speed boost to be applied when successfully engaging with this mechanic. Since movement is verified on the game server, it made sense to create a server-authoritative system for applying buffs to player characters. This system also facilitated further *Timed Buffs* being added for future gameplay mechanics.
 
-# New Cosmetics and Progression system
+## New Cosmetics and Progression system
 I scoped, planned, and implemented a new single-player Progression system for the game, as well as a new Cosmetics browser and unlock system.
 
 Players are assigned Goals to achieve, and progress toward those Goals is updated in the Goals menu, showing the player how far they have progressed through each set of tasks. After completing enough tasks, the player unlocks Cosmetics which can be applied to their in-game character model. In addition to unlocking Cosmetics through Goal completion, players can also spend the coins that they earn through playing the game on unique Cosmetics.
 
 Progression and Cosmetics data is serialised and stored on the Meta backend, with server-side verification to ensure that progress is both persisted properly and fairly achieved. Each update to Progression and Cosmetics data includes a historic log of all Progression updates, and these are checked against one another to verify that the unlocks and purchases are accurate.
 
-<center><video src="https://private-user-images.githubusercontent.com/69112024/533427022-2ef14007-7c52-4ce9-b4ac-b07d34dc23a5.mp4" controls="controls" style="max-width: 1050px;">
-</video></center>
+<center>
+  <video
+    src="/assets/videos/CosmeticsCompressed.mp4"
+    controls="controls"
+    style="max-width: 1050px;"
+  >
+  </video>
+</center>
 &nbsp;
 
-# New Social Features
+## New Social Features
 I worked directly with Meta engineers to integrate brand-new Facebook APIs, allowing us to add new social features, including game invites via Messenger and Tournament integrations.
 
 Alongside solo gameplay with new mechanics, I had to allow for the original multiplayer gameplay. Since the game was designed for an environment where all the players were already logged into the game session, I implemented Facebook integrations allowing invites to be sent to friends asynchronously, facilitating players joining and leaving the game at will.
 
-<center><video src="https://private-user-images.githubusercontent.com/69112024/533427156-c9e29e9f-46ac-44bd-ae19-882150245f45.mp4" controls="controls" style="max-width: 1050px;">
-</video></center>
+<center>
+  <video
+    src="/assets/videos/MultiplayerCompressed.mp4"
+    controls="controls"
+    style="max-width: 1050px;"
+  >
+  </video>
+</center>
 &nbsp;
 
-# Optimisation 
+## Optimisation 
 I worked with Unity alongside other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: https://unity.com/resources/coatsink-ready-set-cook.
 
-# DevOps Responsibilities
+## DevOps Responsibilities
 I managed the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involved the maintenance and monitoring of the live game servers on AWS. I was also responsible for the creation of additional Cloud infrastructure to support the new version of Ready, Set, Cook!
 
 I have experience using a wide range of AWS services, including EC2, CodeDeploy, S3, Cloudwatch, Route 53, Elasticache, Lambda, and IAM. I also used Docker for containerisation, and various static code analysis tools such as Bearer and ScoutSuite for compliance purposes.
 
-# Leadership and Management
+## Leadership and Management
 I mentored a Programming Intern for 6 months, onboarding them on to the project, assigning them appropriate tasks and providing regular feedback through code review. I introduced and taught new technologies as required, and helped them contribute to both the C# client and JavaScript server.
 
 &nbsp;
 
-## Previous Experience and Projects
+# Previous Experience and Projects
 
 You can check out some of my **game jam projects** below:
 
@@ -593,7 +617,7 @@ public enum PathfindingHeuristic
 </video></center>
 &nbsp;
 
-# Loot System
+## Loot System
 
 In *The Catacombs*, I created a loot system allowing the player to find and equip new gear as they explore the dungeon.
 
@@ -612,7 +636,7 @@ The loot system is designed in a way that makes it incredibly easy to add new eq
 
 &nbsp;
 
-# Player Controllers
+## Player Controllers
 
 In *Project Whimsy*, I used a finite state machine to compartmentalise movement and actions into individual states. 
 
@@ -622,7 +646,7 @@ In *Project Whimsy*, I used a finite state machine to compartmentalise movement 
 &nbsp;
 
 
-# Dialogue systems
+## Dialogue systems
 
 In *Fallen*, I created my own closed captioning system to display dialogue and provide text descriptions for sound effects. 
 
@@ -661,7 +685,7 @@ I also used `Animators` in *Moonshot* for basic UI effects, such as when picking
 <center><video src="https://user-images.githubusercontent.com/69112024/155396943-cff7ed08-8685-4cd4-a857-9af3f7fddcfc.mp4" controls="controls" style="max-width: 1050px;">
 </video></center>
 
-# Audio
+## Audio
 
 In *Fallen*, I used a lot of spatial audio to contribute to the overall atmosphere.
 
