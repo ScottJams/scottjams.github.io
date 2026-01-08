@@ -14,23 +14,80 @@ Hi, I'm Scott Simpson and I'm a Games Programmer based in the UK. Below you will
 - **Programmer - 2 years** experience with Unity working on various indie projects such as *The Catacombs* - **Unity, C#**
 - **Evoke Systems - Junior iOS Developer - 2 years** creating software for major airlines in an Agile environment - **Objective C, Swift, C#**
 - **BSc Computing Science** - Final paper on game development in Unity - **Unity, C#**
-- **1 year** experience with UE4 through University & personal use - **Unreal Engine, C++** 
+- **1 year** experience with UE5 - **Unreal Engine, C++** 
 
 &nbsp;
 
 ## Coatsink - Programmer - 2 Years
-I currently work as a Programmer at Coatsink, acting as the Code Lead on the online multiplayer game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). Ready, Set, Cook! is hosted on the Facebook Instant Gaming platform, and attracts over 2 million unique Monthly Active Users
+I currently work as a Programmer at Coatsink, acting as the Code Lead on the online co-op cooking game [Ready, Set, Cook!](https://www.facebook.com/gaming/play/301781071466501). RSC is playable on the Facebook Instant Gaming platform, and attracts over 2 million unique Monthly Active Users.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/06684cc1-4b3d-4df0-9fdd-0967d7be17a6"/>
 </p>
 
-Some examples of my work on Ready, Set, Cook!:
-- Lead the development of a new single-player version of the game, adapting the project from Messenger Calls to the Instant Gaming platform.
-- Implemented completely new gameplay mechanics for single-player levels, working with Design, Art and Audio departments from inception to production. 
+Project highlights:
+- Lead the development of a new single-player version of the game.
+- Worked across a complex codebase with game client code written in C#/Unity, and game server logic in Node.JS/Javascript. 
+- Implemented completely new gameplay mechanics for single-player levels, working with Design, Art and Audio departments from inception to production.
 - Worked directly with Meta engineers to integrate brand-new Facebook APIs, allowing us to add new social features such as Tournaments to the game.
 - Manage the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involves the maintenance and monitoring of the live game servers, as well as the creation of additional Cloud infrastructure when required.
 - Worked with Unity and other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: [https://unity.com/resources/coatsink-ready-set-cook](https://unity.com/resources/coatsink-ready-set-cook).
+
+# Single-Player Adaptation
+I was tasked with creating a new version of the game for the Instant Gaming platform. This involved analysing the client-server architecture of the project, identifying the scope of the work necessary, and putting together a proposal for how to approach it.
+
+I created new levels for the single-player game mode, working with Art and Design to adapt the game for a solo experience. I also created a tutorial stage introducing players to the single-player version - this required developing a new RPC system to pause the gameplay flow at critical moments, whilst making sure that key systems continued to operate server-side.
+
+<center><video src="https://private-user-images.githubusercontent.com/69112024/533425355-70907911-b889-4c26-a784-4f41228da97c.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
+
+# New Gameplay Mechanics
+I implemented completely new gameplay mechanics for single-player levels, working with Design, Art and Audio departments from inception to production. 
+
+The video below demonstrates several new features:
+- The *Active Cooking* mechanic, which appears as a QTE when players interact with various tools and ingredients in single-player levels. I worked with Design to prototype several early versions, creating editor configurations for each to allow them to explore different implementations.
+- The ticket queue, which displays orders at the bottom of the screen as they come in. The player can tap an order to expand it and view the recipe for creating that dish, and all of the order tickets will react accordingly to keep all of the views on screen.
+- The restaurant meter bar, which tracks the fail state of the game. This meter listens to incoming events as customers lose patience waiting for orders, and partially refills when orders are successfully completed.
+
+<center><video src="https://private-user-images.githubusercontent.com/69112024/533426872-7a5da25e-b9b7-47de-8c22-8c0f4af97968.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
+
+After settling on the design of the Active Cooking timer, I implemented a more robust version, utilising a state machine to handle update logic as the player makes various choices. I also implemented a generic *Timed Buffs* system, which enabled a speed boost to be applied when successfully engaging with this mechanic. Since movement is verified on the game server, it made sense to create a server-authoritative system for applying buffs to player characters. This system also facilitated further *Timed Buffs* being added for future gameplay mechanics.
+
+# New Cosmetics and Progression system
+I scoped, planned, and implemented a new single-player Progression system for the game, as well as a new Cosmetics browser and unlock system.
+
+Players are assigned Goals to achieve, and progress toward those Goals is updated in the Goals menu, showing the player how far they have progressed through each set of tasks. After completing enough tasks, the player unlocks Cosmetics which can be applied to their in-game character model. In addition to unlocking Cosmetics through Goal completion, players can also spend the coins that they earn through playing the game on unique Cosmetics.
+
+Progression and Cosmetics data is serialised and stored on the Meta backend, with server-side verification to ensure that progress is both persisted properly and fairly achieved. Each update to Progression and Cosmetics data includes a historic log of all Progression updates, and these are checked against one another to verify that the unlocks and purchases are accurate.
+
+<center><video src="https://private-user-images.githubusercontent.com/69112024/533427022-2ef14007-7c52-4ce9-b4ac-b07d34dc23a5.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
+
+# New Social Features
+I worked directly with Meta engineers to integrate brand-new Facebook APIs, allowing us to add new social features, including game invites via Messenger and Tournament integrations.
+
+Alongside solo gameplay with new mechanics, I had to allow for the original multiplayer gameplay. Since the game was designed for an environment where all the players were already logged into the game session, I implemented Facebook integrations allowing invites to be sent to friends asynchronously, facilitating players joining and leaving the game at will.
+
+<center><video src="https://private-user-images.githubusercontent.com/69112024/533427156-c9e29e9f-46ac-44bd-ae19-882150245f45.mp4" controls="controls" style="max-width: 1050px;">
+</video></center>
+&nbsp;
+
+# Optimisation 
+I worked with Unity alongside other engineers on my project to optimise filesize and loading times for mobile devices. Case Study by Unity can be read here: https://unity.com/resources/coatsink-ready-set-cook.
+
+# DevOps Responsibilities
+I managed the Cloud infrastructure for 6 different games hosted on Amazon Web Services (AWS), which involved the maintenance and monitoring of the live game servers on AWS. I was also responsible for the creation of additional Cloud infrastructure to support the new version of Ready, Set, Cook!
+
+I have experience using a wide range of AWS services, including EC2, CodeDeploy, S3, Cloudwatch, Route 53, Elasticache, Lambda, and IAM. I also used Docker for containerisation, and various static code analysis tools such as Bearer and ScoutSuite for compliance purposes.
+
+# Leadership and Management
+I mentored a Programming Intern for 6 months, onboarding them on to the project, assigning them appropriate tasks and providing regular feedback through code review. I introduced and taught new technologies as required, and helped them contribute to both the C# client and JavaScript server.
+
+&nbsp;
 
 ## Previous Experience and Projects
 
@@ -598,14 +655,6 @@ In *The Catacombs*, I created, rigged, and animated 2D sprites, making use of In
 
 <center><video src="https://user-images.githubusercontent.com/69112024/191863324-6f73b40a-6e17-47ad-bd7a-745baa6d29b8.mp4" controls="controls" style="max-width: 1050px;">
 </video></center>
-
-
-In *Fallen*, I imported animations from [Mixamo](https://www.mixamo.com) and used an `Animator` to transition between them as appropriate. I also used `Animations` for fading in and out during scene transitions.
-
-<center><video src="https://user-images.githubusercontent.com/69112024/155396952-c836e898-dc3d-484a-a2e4-007956fd6d87.mp4" controls="controls" style="max-width: 1050px;">
-</video></center>
-
-Since this was a game jam project, I didn't commit to fully fleshing it out with animations such as rotating in position, moving diagonally, moving backwards and so forth - but it was a good introduction to blending between more complex `Animation` timelines.
 
 I also used `Animators` in *Moonshot* for basic UI effects, such as when picking up collectibles.
 
